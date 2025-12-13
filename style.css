@@ -1,0 +1,1301 @@
+/*
+Aventura Sella - Estilo ORGÁNICO y PROFESIONAL (Toque Humano)
+Paleta: Azul/Celeste (#00B4D8, #48CAE4)
+*/
+
+@charset "utf-8";
+
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            position: relative;
+            background: #0D1B2A; 
+            color: #E0FBFC; 
+            line-height: 1.7; 
+        }
+
+        /* Variables de Color */
+        :root {
+            --primary-color: #00B4D8; 
+            --secondary-color: #48CAE4; 
+            --dark-background: #0D1B2A;
+            --mid-dark: #1B263B;
+            --text-light: #E0FBFC;
+            --shadow-ambient: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 180, 216, 0.15); 
+        }
+
+        /* Globales */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            min-height: 90vh; 
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Separador con degradado sutil */
+            border-bottom: 5px solid transparent; 
+            border-image: linear-gradient(to right, #0D1B2A, rgba(72, 202, 228, 0.2), #0D1B2A) 1;
+        }
+
+        /* Fondos de Sección */
+        #home {
+            background: linear-gradient(180deg, var(--dark-background) 0%, #000 100%);
+            min-height: 100vh;
+        }
+        #philosophy { background: #152538; } 
+        #river-features { background: #0A141A; }
+        #usps { background: #152538; }
+        #secondary-cta {
+            background: radial-gradient(circle at center, #0B334A 0%, var(--dark-background) 100%);
+            min-height: 40vh;
+        }
+        
+        .section-title {
+            font-size: 3.2em;
+            text-align: center;
+            margin-bottom: 70px;
+            color: var(--primary-color); 
+            text-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+            font-weight: 700;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header Styles (Menos agresivo) */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px; 
+            background: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .logo {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .logo-container:hover .logo {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .main-menu {
+            display: flex;
+            gap: 30px;
+        }
+        .menu-item {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 5px 0;
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .menu-item:hover, .menu-item.active {
+            color: var(--secondary-color); 
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        .menu-item:hover::after, .menu-item.active::after {
+            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Home Section */
+        .home-content {
+            text-align: center;
+            padding-top: 100px;
+            max-width: 800px;
+        }
+        .main-title {
+            font-size: 4.8em; 
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(0, 180, 216, 0.4);
+            animation: textFloatIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) both; 
+        }
+        
+        @keyframes textFloatIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #C1E4FA;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        /* Botón CTA */
+        .cta-button {
+            display: inline-flex; 
+            align-items: center;
+            gap: 10px;
+            padding: 16px 35px;
+            text-decoration: none;
+            color: var(--dark-background);
+            font-weight: 700;
+            border-radius: 30px; 
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+            letter-spacing: 0.5px; 
+            text-transform: uppercase;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 35px rgba(72, 202, 228, 0.8), 0 8px 30px rgba(0, 0, 0, 0.4);
+            color: var(--dark-background);
+        }
+        
+        .secondary-cta-btn {
+             background: transparent;
+             color: var(--text-light);
+             border: 2px solid var(--primary-color);
+             box-shadow: 0 0 15px rgba(0, 180, 216, 0.4);
+        }
+        
+        .secondary-cta-btn:hover {
+            background: var(--primary-color);
+            color: var(--dark-background);
+            box-shadow: 0 0 25px rgba(72, 202, 228, 0.7);
+        }
+        
+        /* --- PHILOSOPHY (Bordes más suaves y orgánicos) --- */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .philosophy-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-ambient);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .philosophy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(0.7);
+            transition: filter 0.5s ease;
+            border-radius: 20px;
+        }
+        
+        .philosophy-image:hover img {
+            filter: brightness(1.0);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            padding: 20px;
+            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7); 
+        }
+        .image-overlay p {
+            font-style: italic;
+            margin: 0;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .info-block {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-left: 5px solid var(--secondary-color);
+            background: #1e304b; 
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-block:hover {
+            transform: translateY(-3px); 
+            background: #243550;
+        }
+        
+        .info-block h3 {
+            font-size: 1.8em;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-block .icon {
+            font-size: 1.2em;
+            margin-right: 15px;
+            color: var(--secondary-color);
+        }
+
+        /* --- RIVER FEATURES (Timeline más fluido) --- */
+        .river-container {
+            max-width: 900px;
+        }
+        
+        .river-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .river-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--mid-dark));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+            justify-content: flex-start;
+        }
+        
+        .timeline-item.right-aligned {
+            justify-content: flex-end;
+        }
+
+        .timeline-dot {
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: var(--dark-background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 10;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 12px rgba(0, 180, 216, 0.7);
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 25px;
+            background: #18283b;
+            border-radius: 15px;
+            box-shadow: var(--shadow-ambient);
+            border: 1px solid rgba(72, 202, 228, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content { margin-right: 55%; }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: 55%; }
+
+        .timeline-content h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        /* USPs Section (Efecto de "tarjeta flotante") */
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .usp-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--dark-background);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .usp-item:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2);
+            background: #22344D; 
+        }
+
+        .usp-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .usp-item h3 {
+            font-size: 1.6em;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        /* CTA Banner */
+        .cta-content {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+            background: rgba(0, 180, 216, 0.05);
+            border-radius: 20px;
+            border: 2px dashed var(--secondary-color); 
+            box-shadow: 0 0 30px rgba(0, 180, 216, 0.1);
+        }
+        
+        .cta-content h2 {
+            font-size: 3.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .cta-content p {
+            font-size: 1.2em;
+            color: #BBE1FA;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            border-top: 1px solid rgba(0, 180, 216, 0.1);
+            padding: 30px 20px;
+            color: #8D99AE;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: #8D99AE;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Scroll to top button (más suave) */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--dark-background);
+            border-radius: 10px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.5);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+
+        /* --- ANIMACIONES SCROLL-REVEAL AJUSTADAS (Más orgánicas) --- */
+        
+        .scroll-reveal {
+            /* Curva de animación profesional y suave (la clave del 'toque humano') */
+            transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .scroll-reveal.fade-in-up {
+            transform: translateY(30px);
+        }
+        .scroll-reveal.visible.fade-in-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-reveal.zoom-in {
+            transform: scale(0.8);
+        }
+        .scroll-reveal.visible.zoom-in {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .scroll-reveal.fade-in-right {
+            transform: translateX(50px);
+        }
+        .scroll-reveal.visible.fade-in-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-reveal.fade-in-left {
+            transform: translateX(-50px);
+        }
+        .scroll-reveal.visible.fade-in-left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scroll-reveal.scale-up {
+            transform: scale(0.7);
+        }
+        .scroll-reveal.visible.scale-up {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Flip-Horizontal (Ahora menos dramático) */
+        .scroll-reveal.flip-horizontal {
+            transform: perspective(1000px) rotateY(3deg);
+        }
+        .scroll-reveal.visible.flip-horizontal {
+            opacity: 1;
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        /* Retrasos CSS para animaciones en secuencia */
+        .scroll-reveal[data-delay="0.1"] { transition-delay: 0.1s; }
+        .scroll-reveal[data-delay="0.2"] { transition-delay: 0.2s; }
+        .scroll-reveal[data-delay="0.3"] { transition-delay: 0.3s; }
+        .scroll-reveal[data-delay="0.4"] { transition-delay: 0.4s; }
+        .scroll-reveal[data-delay="0.5"] { transition-delay: 0.5s; }
+        .scroll-reveal[data-delay="0.6"] { transition-delay: 0.6s; }
+        .scroll-reveal[data-delay="0.7"] { transition-delay: 0.7s; }
+        .scroll-reveal[data-delay="0.8"] { transition-delay: 0.8s; }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+            .main-title {
+                font-size: 3.8em;
+            }
+            .section-title {
+                font-size: 2.8em;
+            }
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .philosophy-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .river-timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                justify-content: flex-start;
+                margin-bottom: 40px;
+            }
+            .timeline-item.right-aligned {
+                justify-content: flex-start;
+            }
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+            .timeline-content {
+                width: 100%;
+                margin-left: 60px !important; 
+                margin-right: 0 !important;
+            }
+            .usp-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .cta-content h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 576px) {
+             .header {
+                padding: 0 15px;
+            }
+            .main-title {
+                font-size: 2.8em;
+            }
+            .subtitle {
+                font-size: 1.1em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-block h3 {
+                font-size: 1.4em;
+            }
+        }
+        /* =======================================
+   1. GLOBAL & RESET
+   ======================================= */
+   :root {
+    /* Paleta de colores */
+    --color-primary: #00B4D8; /* Azul claro/Turquesa (Highlight) */
+    --color-secondary: #03045E; /* Azul Marino Oscuro (Fondo Principal) */
+    --color-background-dark: #000000;
+    --color-card-dark: #121212;
+    --color-text-light: #F8F8FF; /* Blanco suave */
+    --color-text-muted: #B0C4DE; /* Azul grisáceo */
+    --color-success: #4CAF50; /* Verde para indicar selección */
+    
+    /* Tipografía */
+    --font-primary: 'Montserrat', sans-serif;
+    --spacing-unit: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #48CAE4; /* Un tono más claro que primary */
+}
+
+/* Reutilizable */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.section {
+    padding: 80px 0;
+    min-height: 80vh;
+}
+
+/* -------------------------------------------
+   AQUÍ LA REGLA CLAVE PARA OCULTAR LAS ETAPAS
+   ------------------------------------------- */
+.stage.hidden {
+    display: none !important; 
+}
+/* ------------------------------------------- */
+
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--color-text-light);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-primary);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* =======================================
+   2. HEADER & NAVIGATION
+   ======================================= */
+.header {
+    background-color: var(--color-secondary);
+    padding: 15px var(--spacing-unit);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo svg {
+    display: block;
+}
+
+.main-menu .menu-item {
+    color: var(--color-text-light);
+    margin-left: var(--spacing-unit);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-menu .menu-item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.main-menu .menu-item:hover::after,
+.main-menu .menu-item.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+}
+
+/* =======================================
+   3. HOME SECTION
+   ======================================= */
+#app-container {
+    padding: 0; 
+}
+
+#selection-stage {
+    text-align: center;
+    padding: 80px 0;
+}
+
+#selection-stage h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--color-text-light);
+}
+
+#selection-stage .subtitle {
+    font-size: 1.2em;
+    color: var(--color-text-muted);
+    margin-bottom: 50px;
+}
+
+/* =======================================
+   4. ACTIVITIES GRID
+   ======================================= */
+.activities-grid {
+ display: grid; 
+    
+    /* Esta línea es la CLAVE: crea 3 columnas con ancho igual (1fr) */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    gap: 30px; /* Espacio entre las tarjetas */
+    
+    /* Importante para que las 3 columnas tengan espacio para aparecer */
+    width: 90%; 
+    max-width: 1200px; /* Asegura un ancho máximo generoso */
+    margin: 30px auto; /* Centra el grid */
+} /* <-- Solo UNA llave de cierre para .activities-grid */
+
+
+/* --- REGLAS DE RESPONSIVIDAD (Media Queries) --- */
+
+/* Para pantallas medianas (tabletas grandes, por ejemplo) */
+@media (max-width: 1024px) {
+    .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        gap: 25px;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .activities-grid {
+        /* En móviles, solo 1 columna */
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+
+/* --- AÑADIR/MODIFICAR ESTILOS DE TARJETA --- */
+
+.activity-card {
+    /* Mantener las transiciones 3D */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.4s ease, opacity 0.4s ease;
+    
+    /* Fondo oscuro y borde que ya tienes */
+    background-color: var(--color-card-dark); 
+    border: 2px solid transparent; 
+    padding-bottom: 25px;
+    
+    /* Importante para la Opacidad Lateral */
+    opacity: 0.8; /* Ligeramente tenue por defecto */
+}
+
+/* EFECTO HOVER: Elevación profesional */
+
+
+/* --- MODIFICACIÓN DE LA NAVEGACIÓN (Flechas Sutiles) --- */
+
+.carousel-nav {
+    /* --- CAMBIOS CLAVE PARA FLEXBOX --- */
+    /* 1. Anula el posicionamiento absoluto para que Flexbox controle su posición */
+    position: static; /* O position: relative; */ 
+    
+    /* 2. Elimina el centrado vertical basado en posición absoluta (Flexbox lo hace ahora) */
+    /* REMOVER: top: 50%; */
+    /* REMOVER: transform: translateY(-50%); */
+    
+    /* 3. Asegura que el icono de la flecha esté en el centro del círculo */
+    display: flex; /* Añade Flexbox a la propia flecha */
+    justify-content: center;
+    align-items: center;
+
+    /* --- ESTILOS VISUALES (Se mantienen) --- */
+    background-color: rgba(3, 4, 94, 0.2); 
+    border: 1px solid var(--color-primary); 
+    color: var(--color-primary); 
+
+    border-radius: 50%;
+    width: 45px; 
+    height: 45px;
+    font-size: 1.8em; 
+    z-index: 50; /* Mantener un z-index alto */
+    
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.3); 
+    transition: all 0.3s ease;
+}
+
+/* El resto de bloques (:hover, :disabled) se mantienen igual */
+
+.carousel-nav:hover {
+    background-color: var(--color-primary); 
+    color: var(--color-background-dark); 
+    box-shadow: 0 0 25px var(--color-primary); /* Halo más fuerte al interactuar */
+}
+
+/* Estado Deshabilitado */
+.carousel-nav:disabled {
+    opacity: 0.1; /* Extremadamente sutil cuando no se puede usar */
+    cursor: not-allowed;
+    box-shadow: none;
+    background: none;
+    border-color: var(--color-text-muted);
+}
+/* --- CORRECCIÓN DE LA TRANSICIÓN BRUSCA DEL BOTÓN (Mantener esto) --- */
+.add-to-cart-btn {
+    background-color: var(--color-primary); 
+    color: var(--color-background-dark);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+}
+.card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+/* Imágenes de las cards (Ajustar rutas de imagen) */
+/* =========================================================
+   5. DEFINICIÓN DE IMÁGENES DE FONDO (ACTIVITY CARDS)
+   ========================================================= */
+
+/* APLICAR '../' A TODAS LAS RUTAS, ya que las imágenes están FUERA de la carpeta CSS */
+
+.card-image.sella {
+    background-image: url('../descenso-del-sella.jpeg'); /* CORREGIDO: Sube (../) al nivel de index.html */
+    background-color: #00B4D8;
+}
+
+.card-image.picos {
+    background-image: url('../picos-de-europa.webp'); /* CORREGIDO */
+    background-color: #4CAF50;
+}
+
+.card-image.rafting {
+    background-image: url('../rafting-asturias.jpg'); /* CORREGIDO */
+    background-color: #FF6B6B;
+}
+
+.card-image.quad {
+    background-image: url('../quad-picos.jpg'); /* CORREGIDO */
+    background-color: red;
+}
+
+.card-image.cueva {
+    background-image: url('../cueva-asturias.jpg'); /* CORREGIDO */
+    background-color: green;
+}
+
+.card-image.barranco {
+    background-image: url('../barranquismo-asturias.jpg'); /* CORREGIDO */
+    background-color: blue;
+}
+
+.activity-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.activity-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+
+/* Botones */
+.add-to-cart-btn, .main-action-btn, .secondary-action-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+    letter-spacing: 1px;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho de la tarjeta */
+}
+
+/* Estilo por defecto (Seleccionar Actividad) */
+.add-to-cart-btn {
+    background: linear-gradient(90deg, #00B4D8 0%, #48CAE4 100%);
+    color: var(--color-background-dark);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+}
+
+.add-to-cart-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.6);
+}
+
+/* Estilo cuando la actividad ya está seleccionada (.selected) */
+.add-to-cart-btn.selected {
+    background: var(--color-success); /* Color verde */
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.6);
+    color: var(--color-background-dark);
+    /* Para que el usuario note el cambio */
+    border: 2px solid var(--color-success); 
+}
+
+.add-to-cart-btn.selected:hover {
+    background: #5CB85C; 
+}
+
+
+.main-action-btn {
+    background: linear-gradient(90deg, #00B4D8 0%, #48CAE4 100%);
+    color: var(--color-background-dark);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+}
+
+.main-action-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.6);
+}
+
+.secondary-action-btn {
+    background-color: transparent;
+    border: 2px solid var(--color-text-muted);
+    color: var(--color-text-muted);
+    margin-top: 10px;
+}
+
+.secondary-action-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.main-action-btn.reserve-btn:disabled {
+    background: #444;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+/* =======================================
+   5. CART STAGE
+   ======================================= */
+#cart-stage {
+    padding: 80px 0;
+    min-height: 80vh;
+}
+
+#cart-stage h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-text-light);
+}
+
+.cart-content {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* =======================================
+   4. ACTIVITIES CAROUSEL (PROFESIONAL)
+   ======================================= */
+
+/* Contenedor del carrusel y las flechas */
+/* =========================================================
+   4. ACTIVITIES CAROUSEL (ESTILO: APILADO / DECK)
+   ========================================================= */
+
+/* Contenedor principal que da el espacio */
+/* =========================================================
+   4. ACTIVITIES CAROUSEL (ESTILO: APILADO VERTICAL LIMPIO)
+   ========================================================= */
+
+/* Contenedor principal que da el espacio */
+/* =========================================================
+   4. ACTIVITIES CAROUSEL (ESTILO: APILADO VERTICAL - COVER FLOW)
+   ========================================================= */
+
+/* Contenedor principal que da el espacio (¡CORREGIDO con Flexbox!) */
+.carousel-wrapper {
+    /* CLAVE A: Dale un ancho generoso */
+    width: 900px; 
+    max-width: 95vw; 
+    margin: 50px auto; /* Centra el wrapper en la página */
+    
+    /* CLAVE B: Usa Flexbox para la distribución */
+    display: flex; 
+    align-items: center; /* Centra verticalmente las flechas con el carrusel */
+    justify-content: space-between; /* CLAVE: Empuja las flechas a los extremos */
+    
+    /* Nota: Ya no necesitamos position: relative ni padding aquí */
+}
+
+/* Contenedor de apilamiento CORREGIDO */
+.carousel-container {
+    position: relative; 
+    
+    /* 1. ANCHO: Debe coincidir con el ancho de la tarjeta (350px) para centrarla */
+    width: 350px; 
+    
+    /* 2. ALTURA: Debe ser definida y mayor a la tarjeta (420px) */
+    height: 600px; 
+    
+    
+    /* Centra el contenedor en la página */
+    transform-style: preserve-3d;
+    margin: 0 auto; 
+    
+    overflow: visible; 
+    padding: 0;
+}
+
+/* Estilo Base de la Tarjeta (Vertical y Apilada) */
+.carousel-container .activity-card {
+    position: absolute; /* CLAVE para apilar en el mismo punto */
+    top: 0;
+    left: 0;
+    
+    /* Dimensiones para diseño Vertical */
+    width: 350px; 
+    height: 420px; 
+    
+    display: block; /* Flujo normal vertical */
+
+    background-color: var(--mid-dark);
+    padding: 15px; 
+    border-radius: 15px; 
+    overflow: hidden; 
+    
+    /* Estilos 3D y Transiciones */
+    /* La duración es 0s (instantánea) y no hay retraso (0s) */
+transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-index 0s step-end;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    /* 🛑 ESTA LÍNEA DEBE SER CORREGIDA Y COMPLETA 🛑 */
+    transform: translate3d(0, 0, 0) scale(0.9); 
+    
+    z-index: 1;
+}
+/* 🥇 Tarjeta Activa (Centro) */
+.carousel-container .activity-card.active {
+    transform: translate3d(0, 0, 50px) scale(1); /* La acerca al usuario (100px) */
+    z-index: 10;
+    opacity: 1;
+}
+
+/* 🥈 Tarjeta Inmediatamente a la Derecha */
+.carousel-container .activity-card.next-1 {
+    /* Mueve a la derecha (X), Rota hacia adentro, Escala */
+    transform: translate3d(120px, 0, 0) rotateY(-30deg) scale(0.85); 
+    z-index: 5;
+    opacity: 0.8;
+}
+
+/* 🥈 Tarjeta Inmediatamente a la Izquierda */
+.carousel-container .activity-card.prev-1 {
+    /* Mueve a la izquierda (X), Rota hacia adentro (opuesto), Escala */
+    transform: translate3d(-120px, 0, 0) rotateY(30deg) scale(0.85); 
+    z-index: 5;
+    opacity: 0.8;
+}
+
+/* 🥉 Segunda a la Derecha */
+.carousel-container .activity-card.next-2 {
+    /* Más lejos, más rotación y más atrás (Z negativo) */
+    transform: translate3d(220px, 0, -200px) rotateY(-40deg) scale(0.7); 
+    z-index: 3;
+    opacity: 0.5;
+}
+
+/* 🥉 Tarjeta Oculta (Derecha) */
+.carousel-container .activity-card.hidden-next {
+    /* Mueve completamente fuera de la vista */
+    transform: translate3d(500px, 0, -500px) scale(0.5); 
+    z-index: 1;
+    opacity: 0;
+}
+
+/* 🥉 Tarjeta Oculta (Izquierda) */
+.carousel-container .activity-card.hidden-prev,
+.carousel-container .activity-card.hidden-left {
+    /* Mueve completamente fuera de la vista */
+    transform: translate3d(-500px, 0, -500px) scale(0.5); 
+    z-index: 1;
+    opacity: 0;
+}
+
+/* --- ESTILO DE IMAGEN (La imagen debe ir arriba) --- */
+.activity-card .card-image {
+    height: 180px; /* Altura para la imagen superior */
+    margin-bottom: 15px;
+    border-radius: 10px; 
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+
+/* --- ESTADOS DE APILAMIENTO (La Pirámide Centrada) --- */
+
+/* 1. Tarjeta PRINCIPAL (Al frente y grande) */
+.activity-card.active {
+    transform: translate3d(0, 0, 0) scale(1);
+    z-index: 10; 
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transition: transform 0.6s ease-out, box-shadow 0.6s ease; 
+}
+
+/* 2. Tarjeta inmediatamente detrás (DERECHA) */
+.activity-card.next-1 {
+    transform: translate3d(10px, 10px, -10px) scale(0.95);
+    z-index: 5; 
+    opacity: 0.8;
+}
+
+/* 3. Tarjeta más atrás (DERECHA) */
+.activity-card.next-2 {
+    transform: translate3d(20px, 20px, -20px) scale(0.90);
+    z-index: 3; 
+    opacity: 0.6;
+}
+
+/* 4. Tarjeta inmediatamente anterior (IZQUIERDA) */
+.activity-card.prev-1 {
+    transform: translate3d(-10px, 10px, -10px) scale(0.95); /* Mover a la izquierda (negativo) */
+    z-index: 5; 
+    opacity: 0.8; 
+    pointer-events: none;
+    transition: transform 0.6s ease-out, opacity 0.6s ease;
+}
+
+/* 5. Tarjeta anterior a la anterior (IZQUIERDA) */
+.activity-card.hidden-prev {
+    transform: translate3d(-20px, 20px, -20px) scale(0.90); /* Mover más a la izquierda */
+    z-index: 3; 
+    opacity: 0.6; 
+    pointer-events: none;
+}
+
+/* 6. Tarjetas fuera de vista (ocultas a la derecha) */
+.activity-card.hidden-next {
+    transform: translate3d(150%, 0, -30px) scale(0.85); /* Se mueve muy lejos a la derecha */
+    z-index: 2; 
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+/* 7. Tarjetas fuera de vista (ocultas a la izquierda) */
+.activity-card.hidden-left {
+    transform: translate3d(-150%, 0, -30px) scale(0.85); /* Se mueve muy lejos a la izquierda */
+    z-index: 2; 
+    opacity: 0; 
+    pointer-events: none;
+}
+    
+/* Estilo de selección (plano) */
+.activity-card.selected {
+    border: 3px solid var(--primary-color) !important; 
+    transform: none !important; 
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.7) !important; 
+    opacity: 1 !important; 
+    z-index: 12 !important; 
+}; 
+
+
+
+
+
+
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: var(--color-text-muted); /* Gris tenue */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active {
+    background-color: var(--color-primary); /* Azul de destaque */
+    transform: scale(1.2); 
+}
+
+/* --- CORRECCIÓN DE LA TRANSICIÓN BRUSCA DEL BOTÓN --- */
+/* Asegura que el botón por defecto use color sólido en lugar de degradado */
+.add-to-cart-btn {
+    background-color: var(--color-primary); /* Cambiado de linear-gradient a color sólido */
+    color: var(--color-background-dark);
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+}
