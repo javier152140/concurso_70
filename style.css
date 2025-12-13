@@ -1331,7 +1331,7 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
 
 .tarjetas:hover {
     transform: translateY(-8px) scale(1.01);
-    background-color: #156ec7;
+    background-color: #0a1e33;
     box-shadow:
         0 15px 40px rgba(219, 7, 7, 0.7),
         0 0 30px var(--color-primary);
