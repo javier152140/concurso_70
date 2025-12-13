@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva y Contacto | Aventura en Asturias</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    
+    <header class="header" id="header">
+        <a href="index.html" class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00B4D8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#48CAE4;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(-15 17.5 50)" />
+                    <rect x="35" y="15" width="15" height="70" fill="url(#grad1)" />
+                    <rect x="60" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(15 67.5 50)" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad1)" stroke-width="5" />
+                </svg>
+            </div>
+            <div class="logo-text">Aventura Sella</div>
+        </a>
+        
+        <nav class="main-menu" id="mainMenu">
+            <a href="index.html" class="menu-item">Inicio</a>
+            <a href="nuestra-esencia.html" class="menu-item">Nuestra Esencia</a>
+            <a href="experiencia-sella.html" class="menu-item">La Experiencia Sella</a>
+            <a href="ventajas.html" class="menu-item">Ventajas Únicas</a>
+            <a href="contacto.html" class="menu-item active">Reserva / Contacto</a>
+        </nav>
+        
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main id="app-container">
+        
+        <section id="cart-stage" class="stage active">
+            <div class="container">
+                <h2>Reserva tu Aventura en Asturias</h2>
+                
+                <div class="cart-content">
+                    
+                    <div class="cart-details-form">
+                        
+                        <div class="form-section">
+                            <h3>1. Selecciona Fechas y Participantes</h3>
+                            <form id="booking-form">
+                                <div class="form-group">
+                                    <label for="booking-date">📅 Fecha de la Actividad:</label>
+                                    <input type="date" id="booking-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="participants-global">👥 Número Total Estimado de Personas:</label>
+                                    <input type="number" id="participants-global" min="1" value="1" required>
+                                </div>
+                                
+                                <h3 style="margin-top: 30px;">2. Detalle de Actividades Seleccionadas (Por Persona)</h3>
+                                
+                                <p class="small-info">Ajusta la cantidad de participantes para una actividad y el resto se sincronizará automáticamente:</p>
+
+                                <div class="cart-items">
+                                    <p id="empty-cart-message">Tu carrito está vacío. <a href="index.html" style="font-weight: 700;">Vuelve a Actividades</a> para añadir.</p>
+                                    </div>
+                            </form>
+                        </div>
+                        
+                        <div class="form-section contact-info">
+                            <h3>3. Datos de Contacto</h3>
+                            <div class="form-group">
+                                <label for="client-name">👤 Nombre y Apellidos (Responsable):</label>
+                                <input type="text" id="client-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="client-email">📧 Correo Electrónico:</label>
+                                <input type="email" id="client-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="client-phone">📱 Teléfono de Contacto:</label>
+                                <input type="tel" id="client-phone" required>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="cart-summary">
+                        <h3>Resumen del Pedido</h3>
+                        <div class="summary-line"><span>Subtotal:</span> <span id="cart-subtotal">0.00€</span></div>
+                        <div class="summary-line"><span>Impuestos (21% IVA):</span> <span id="cart-tax">0.00€</span></div>
+                        <hr>
+                        <div class="summary-line total"><span>TOTAL A PAGAR:</span> <span id="cart-total">0.00€</span></div>
+                        
+                        <button id="checkout-btn" class="main-action-btn reserve-btn" disabled>Reservar y Pagar Ahora</button>
+                        <a href="index.html" class="secondary-action-btn" style="display: block; text-align: center;">Volver a Actividades</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="confirmation-stage" class="stage hidden">
+            <div class="container confirmation-container"> 
+                <div class="confirmation-box">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h2>🎉 ¡Reserva Realizada con Éxito! 🎉</h2>
+                    <p>Gracias por confiar en Aventura Sella. Te esperamos en Arriondas.</p>
+                    <p class="ref-text">Hemos enviado un correo electrónico de confirmación con los detalles de tu reserva.</p>
+                    <p class="ref-text">Referencia de Reserva: **#AS54321**</p>
+                    <button class="main-action-btn">Cerrar</button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © 2025 Aventura Sella. Todos los derechos reservados. | Operado desde Arriondas, Asturias.
+            </div>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos del Servicio</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" id="scrollToTop">
+        <span>↑</span>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
