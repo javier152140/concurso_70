@@ -1,157 +1,181 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // =========================================================
-    // I. VARIABLES Y SETUP INICIAL
+    // I. VARIABLES Y SETUP INICIAL DEL CARRUSEL
+    // La variable 'carouselContainer' se usa para proteger el script.
     // =========================================================
 
     const carouselContainer = document.getElementById('activityCarousel');
-    const cards = Array.from(carouselContainer.getElementsByClassName('activity-card'));
-    const prevBtn = document.getElementById('prevActivity');
-    const nextBtn = document.getElementById('nextActivity');
-    const dotsContainer = document.getElementById('carouselDots');
     
-    const totalCards = cards.length;
-    let currentCardIndex = 0;
-
-    // =========================================================
-    // II. FUNCIONES DEL CARRUSEL
-    // =========================================================
-
-    /**
-     * Aplica las clases de posición (active, next-1, prev-1, etc.) 
-     * a cada tarjeta basándose en el índice actual (currentCardIndex).
-     * Esto crea el efecto visual de apilamiento centrado (Cover Flow).
-     */
-    const updateStackedCards = () => {
+    // 🛑 Protección: Solo inicializar si el contenedor del carrusel existe.
+    if (carouselContainer) {
         
-        cards.forEach((card, index) => {
+        const cards = Array.from(carouselContainer.getElementsByClassName('activity-card'));
+        const prevBtn = document.getElementById('prevActivity');
+        const nextBtn = document.getElementById('nextActivity');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        const totalCards = cards.length;
+        let currentCardIndex = 0;
+
+        // =========================================================
+        // II. FUNCIONES DEL CARRUSEL
+        // =========================================================
+
+        const updateStackedCards = () => {
             
-            // 1. Limpieza de clases de posición
-            card.classList.remove('active', 'next-1', 'next-2', 'hidden-next', 'prev-1', 'hidden-prev', 'hidden-left');
+            cards.forEach((card, index) => {
+                
+                card.classList.remove('active', 'next-1', 'next-2', 'hidden-next', 'prev-1', 'hidden-prev', 'hidden-left');
+                
+                const relativeIndex = index - currentCardIndex;
+                
+                if (relativeIndex === 0) {
+                    card.classList.add('active');
+                } 
+                else if (relativeIndex === 1) {
+                    card.classList.add('next-1');
+                } else if (relativeIndex === 2) {
+                    card.classList.add('next-2');
+                } else if (relativeIndex > 2) {
+                    card.classList.add('hidden-next');
+                } 
+                else if (relativeIndex === -1) {
+                    card.classList.add('prev-1');
+                } else if (relativeIndex === -2) {
+                    card.classList.add('hidden-prev');
+                } else if (relativeIndex < -2) {
+                    card.classList.add('hidden-left');
+                }
+            });
+
+            // Actualizar estado de botones y puntos
+            if (prevBtn) prevBtn.disabled = (currentCardIndex === 0);
+            if (nextBtn) nextBtn.disabled = (currentCardIndex === totalCards - 1);
             
-            // 2. Cálculo del índice relativo (distancia al centro)
-            const relativeIndex = index - currentCardIndex;
-            
-            if (relativeIndex === 0) {
-                // CENTRAL: La tarjeta principal y grande
-                card.classList.add('active');
-            } 
-            
-            // --- DERECHA (Próximas tarjetas) ---
-            else if (relativeIndex === 1) {
-                // Inmediatamente a la derecha
-                card.classList.add('next-1');
-            } else if (relativeIndex === 2) {
-                // Segunda a la derecha
-                card.classList.add('next-2');
-            } else if (relativeIndex > 2) {
-                // Muy lejos a la derecha (oculta)
-                card.classList.add('hidden-next');
-            } 
-            
-            // --- IZQUIERDA (Tarjetas vistas) ---
-            else if (relativeIndex === -1) {
-                // Inmediatamente a la izquierda (visible)
-                card.classList.add('prev-1');
-            } else if (relativeIndex === -2) {
-                // Segunda a la izquierda (visible)
-                card.classList.add('hidden-prev');
-            } else if (relativeIndex < -2) {
-                // Muy lejos a la izquierda (oculta)
-                card.classList.add('hidden-left');
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentCardIndex);
+            });
+        };
+
+        const showPrevCard = () => {
+            if (currentCardIndex > 0) {
+                currentCardIndex--;
+                updateStackedCards();
+            }
+        };
+
+        const showNextCard = () => {
+            if (currentCardIndex < totalCards - 1) {
+                currentCardIndex++;
+                updateStackedCards();
+            }
+        };
+
+        const goToCard = (index) => {
+            if (index >= 0 && index < totalCards) {
+                currentCardIndex = index;
+                updateStackedCards();
+            }
+        };
+        
+        // =========================================================
+        // III. INICIALIZACIÓN Y EVENTOS DEL CARRUSEL
+        // =========================================================
+
+        const createDots = () => {
+            if (dotsContainer) {
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('span');
+                    dot.classList.add('dot');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => goToCard(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', showPrevCard);
+        if (nextBtn) nextBtn.addEventListener('click', showNextCard);
+
+        createDots();
+        updateStackedCards(); 
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                showPrevCard();
+            } else if (e.key === 'ArrowRight') {
+                showNextCard();
             }
         });
-
-        // 3. Actualizar estado de botones y puntos
-        prevBtn.disabled = (currentCardIndex === 0);
-        nextBtn.disabled = (currentCardIndex === totalCards - 1);
         
-        document.querySelectorAll('.dot').forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentCardIndex);
-        });
-    };
-
-    /**
-     * Mueve el carrusel a la tarjeta anterior.
-     */
-    const showPrevCard = () => {
-        if (currentCardIndex > 0) {
-            currentCardIndex--;
-            updateStackedCards();
-        }
-    };
-
-    /**
-     * Mueve el carrusel a la siguiente tarjeta.
-     */
-    const showNextCard = () => {
-        if (currentCardIndex < totalCards - 1) {
-            currentCardIndex++;
-            updateStackedCards();
-        }
-    };
-
-    /**
-     * Mueve el carrusel a la tarjeta seleccionada por el punto.
-     */
-    const goToCard = (index) => {
-        if (index >= 0 && index < totalCards) {
-            currentCardIndex = index;
-            updateStackedCards();
-        }
-    };
+    } // Cierre del IF que protege la inicialización del carrusel.
     
     // =========================================================
-    // III. INICIALIZACIÓN Y EVENTOS
+    // IV. BOTÓN "SELECCIONAR ACTIVIDAD" (FUNCIONALIDAD GLOBAL)
+    // ESTA SECCIÓN SE EJECUTA EN TODAS LAS PÁGINAS.
     // =========================================================
 
-    /**
-     * Crea los puntos de navegación y los añade al contenedor.
-     */
-    const createDots = () => {
-        for (let i = 0; i < totalCards; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.dataset.index = i;
-            dot.addEventListener('click', () => goToCard(i));
-            dotsContainer.appendChild(dot);
-        }
-    };
+    const selectButtons = document.querySelectorAll('.js-select-btn'); 
 
-    // Asignación de Event Listeners a los botones
-    prevBtn.addEventListener('click', showPrevCard);
-    nextBtn.addEventListener('click', showNextCard);
+    selectButtons.forEach(button => {
+        button.addEventListener('click', function(e) { 
+            
+            e.preventDefault(); 
+            e.stopPropagation(); 
+            
+            // 1. Alternar SOLO la clase 'selected' (para el color verde)
+            const isSelected = this.classList.toggle('selected'); 
+            
+            // 2. Controlar el texto del botón
+            if (isSelected) {
+                this.textContent = 'SELECCIONADO';
+            } else {
+                // Lógica para determinar el texto original
+                if (this.classList.contains('primary-cta-btn')) {
+                    this.textContent = '¡Reservar Premium!';
+                } else if (this.classList.contains('secondary-cta-btn')) {
+                    // Texto para Estándar y Familiar (Busca el título de la tarjeta)
+                    try {
+                        const cardTitle = this.closest('.pricing-card').querySelector('h3').textContent;
+                        this.textContent = `¡Reservar ${cardTitle.replace('Paquete ', '')}!`;
+                    } catch (error) {
+                        // Fallback si no encuentra el título (ej. en la página de inicio)
+                        this.textContent = 'Seleccionar Actividad';
+                    }
+                } else {
+                    // Fallback general (ej. en la página de inicio)
+                    this.textContent = 'Seleccionar Actividad';
+                }
+            }
+            
+            this.blur(); 
+            return false; 
+        });
+    });
 
-    // Inicializar: crear puntos y mostrar la primera tarjeta
-    createDots();
-    updateStackedCards(); 
+    // =========================================================
+    // V. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ)
+    // ESTA SECCIÓN TAMBIÉN SE EJECUTA EN TODAS LAS PÁGINAS.
+    // =========================================================
 
-    // Opcional: Permitir navegación con las teclas de flecha
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            showPrevCard();
-        } else if (e.key === 'ArrowRight') {
-            showNextCard();
-        }
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const header = item.querySelector('h3');
         
-    });
-});
-// =========================================================
-// IV. BOTÓN "SELECCIONAR ACTIVIDAD"
-// =========================================================
+        if (header) { 
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
 
-const selectButtons = document.querySelectorAll('.add-to-cart-btn');
-
-selectButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.stopPropagation(); // No interferir con el carrusel
-
-        button.classList.toggle('selected');
-
-        if (button.classList.contains('selected')) {
-            button.textContent = 'Seleccionado';
-        } else {
-            button.textContent = 'Seleccionar Actividad';
+                // Cerrar otros ítems 
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
         }
     });
-});
+
+}); // <--- Cierre único y correcto de todo el script

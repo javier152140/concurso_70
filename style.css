@@ -1640,3 +1640,996 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
         grid-template-columns: 1fr; /* 1 columna en móviles */
     }
 }
+/* ========================================================= */
+/* --- 0. VARIABLES Y ESTILOS BASE (Asegúrate que existen) --- */
+/* ========================================================= */
+:root {
+    --primary-color: #00B4D8; /* Azul claro / Neón */
+    --secondary-color: #48CAE4; /* Azul más claro */
+    --color-background-dark: #070D14; /* Fondo oscuro principal */
+    --color-card-dark: #121A28; /* Fondo de tarjetas */
+    --color-text-light: #F5F5F5; /* Texto claro */
+    --color-text-medium: #CCCCCC; /* Texto gris medio */
+}
+
+body {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    font-weight: 700;
+}
+
+/* Estilos de botones CTA, Header y Footer (Deben estar aquí también) */
+/* ... */
+
+
+/* ========================================================= */
+/* --- 1. BANNER DE LA PÁGINA (DESCENSO DEL SELLA) --- */
+/* ========================================================= */
+.hero-page-banner {
+    /* **IMPORTANTE: SUSTITUYE ESTA URL** */
+    background-image: url('images/sella-background-pro.jpg'); 
+    background-size: cover;
+    background-position: center 70%;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff; 
+    position: relative;
+    z-index: 1;
+}
+
+.hero-page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65); 
+    z-index: 2;
+}
+
+.hero-page-banner .hero-content {
+    z-index: 3; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--secondary-color); 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    font-weight: 900;
+}
+
+.subtitle {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: var(--color-text-medium);
+}
+
+
+/* ========================================================= */
+/* --- 2. SECCIÓN DATOS CLAVE (Historia y Cifras) --- */
+/* ========================================================= */
+.key-data-section {
+    padding: 60px 0;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.data-card {
+    background-color: var(--color-card-dark);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: 5px solid var(--secondary-color);
+    transition: transform 0.3s ease;
+}
+
+.data-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.data-icon {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(0, 180, 216, 0.6);
+}
+
+.data-card h3 {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-weight: 700;
+}
+
+/* Estilo para la cita/nota de advertencia */
+blockquote {
+    margin-top: 40px;
+    padding: 20px;
+    border-left: 5px solid var(--secondary-color);
+    background-color: #121A28; 
+    border-radius: 0 8px 8px 0;
+    color: var(--color-text-light);
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+blockquote a {
+    text-decoration: none;
+}
+
+
+/* ========================================================= */
+/* --- 3. SECCIÓN MAPA Y UBICACIÓN --- */
+/* ========================================================= */
+.map-location-section {
+    padding: 60px 0;
+}
+
+.map-content-wrapper {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.map-text {
+    flex: 1; 
+    padding-right: 20px;
+}
+
+.map-responsive-container {
+    flex: 1; 
+    max-width: 550px;
+    height: 350px; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    border: 3px solid var(--primary-color);
+    background-color: var(--color-card-dark);
+}
+
+.base-location {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: var(--secondary-color);
+}
+
+.base-location .fas {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+
+/* ========================================================= */
+/* --- 4. CUADRÍCULA DE VENTAJAS (Repetido/Ajustado) --- */
+/* ========================================================= */
+.advantage-grid {
+    padding: 60px 0;
+}
+
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.advantage-card {
+    /* Reutiliza estilos de data-card pero con padding diferente */
+    background-color: var(--color-card-dark);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px var(--secondary-color);
+}
+
+.advantage-icon {
+    font-size: 3em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 180, 216, 0.8);
+}
+
+.advantage-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.advantage-card p {
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+/* ========================================================= */
+/* --- 5. RESPONSIVE (Ajustes para Tablet y Móvil) --- */
+/* ========================================================= */
+
+@media (max-width: 992px) {
+    .grid-3-cols, .data-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 850px) {
+    .map-content-wrapper {
+        flex-direction: column; /* Apila el texto y el mapa */
+    }
+    .map-text {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    .map-responsive-container {
+        width: 100%;
+        max-width: 100%;
+        height: 300px;
+    }
+    .page-title {
+        font-size: 2em;
+    }
+    .hero-page-banner {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-3-cols, .data-grid {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
+    }
+    .section {
+        padding: 40px 0;
+    }
+}
+/* ========================================================= */
+/* --- 1. HERO CON VIDEO DE FONDO (Para más 'Chicha') --- */
+/* ========================================================= */
+/* ========================================================= */
+/* --- 1. HERO CON VÍDEO DE YOUTUBE (Solución Profesional) --- */
+/* ========================================================= */
+
+.video-hero {
+    position: relative;
+    overflow: hidden; 
+    
+    /* 1. AUMENTAR ALTURA */
+    min-height: 800px; /* Ya lo habíamos subido antes para el alto */
+    
+    /* 2. FORZAR ANCHO COMPLETO (IGNORAR EL CONTAINER) */
+    width: 100vw; /* <-- ESTA ES LA CLAVE: 100% del Viewport (ancho de la ventana) */
+    margin-left: calc(-50vw + 50%); /* <-- ESTO CENTRA EL BLOQUE Y FUERZA EL BORDE A BORDE */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff; 
+    z-index: 1;
+}
+
+/* Nota: Los estilos del video de fondo y del overlay (::before) ya deberían extenderse con el nuevo ancho. */
+
+/* Ajuste del contenido del título/texto dentro del Hero para que no se vea ridículamente ancho */
+.hero-page-banner .hero-content {
+    z-index: 3; 
+    /* Limitamos el ancho del texto a un máximo de 900px para que sea legible */
+    max-width: 900px; /* <--- Ajuste para el texto dentro del Hero */
+    margin: 0 auto;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra todo el espacio */
+    z-index: 1;
+}
+
+/* Oscurecemos el overlay para que el texto resalte sobre el video */
+.video-hero::before {
+    background: rgba(0, 0, 0, 0.75); /* Un poco más oscuro que antes */
+    z-index: 2;
+}
+
+.hero-page-banner .hero-content {
+    z-index: 3;
+}
+
+/* ========================================================= */
+/* --- 2. TABLA DE PRECIOS PROFESIONAL (PRICING) --- */
+/* ========================================================= */
+.pricing-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+.pricing-card {
+    background: var(--color-background); /* Fondo oscuro (si usas bg-dark-alt) o blanco */
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 40px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card h3 {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.price-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.price-value span {
+    font-size: 1.8rem;
+    font-weight: 500;
+    vertical-align: top;
+    margin-right: 5px;
+    color: var(--color-primary);
+}
+
+.per-person-note {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Estilo para la tarjeta destacada (PREMIUM) */
+.featured-card {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 30px rgba(72, 202, 228, 0.4);
+    transform: scale(1.05); /* Ligeramente más grande */
+}
+
+.featured-card:hover {
+    transform: scale(1.1);
+}
+
+.ribbon {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #FFD700; /* Dorado/Amarillo */
+    color: var(--color-background-dark);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* Lista de Características */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    text-align: left;
+}
+
+.features-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+.features-list li .fas {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.features-list i {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.features-list .disabled-feature {
+    color: var(--color-text-secondary); /* Color más tenue para lo no incluido */
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.features-list .disabled-feature i.fa-times-circle {
+    color: #E76F51; /* Rojo suave para el 'no' */
+}
+
+.featured-card {
+    background: var(--color-primary); /* Fondo azul principal */
+    color: var(--color-background); /* Texto claro sobre fondo azul */
+    transform: scale(1.05); /* Ligeramente más grande */
+    box-shadow: 0 15px 40px rgba(0, 180, 216, 0.4); /* Sombra más fuerte */
+    border: 3px solid #FFD700; /* Borde dorado/amarillo para destacar */
+}
+
+.featured-card:hover {
+    transform: scale(1.06) translateY(-5px); /* Un poco más grande al pasar el ratón */
+}
+
+.featured-card h3, 
+.featured-card .price-value,
+.featured-card .price-value span {
+    color: var(--color-background); /* Asegurar que el texto dentro sea claro */
+}
+
+.featured-card .features-list li {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3); /* Líneas blancas sutiles */
+}
+
+/* Botón principal dentro de la tarjeta destacada */
+.featured-card .primary-cta-btn {
+    background-color: var(--color-background); /* Fondo blanco/oscuro */
+    color: var(--color-primary); /* Texto azul */
+    font-weight: 700;
+}
+.disabled-feature {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.disabled-feature .fas {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+/* ========================================================= */
+/* --- 3. PREGUNTAS FRECUENTES (FAQ) --- */
+/* ========================================================= */
+.faq-section {
+    padding: 60px 0;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.faq-item {
+    /* El borde actual se ve muy bien, lo mantenemos */
+    border: 1px solid var(--color-border); 
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: var(--color-background-darker, #0e122b); /* Fondo azul oscuro */
+    
+    /* Importante para la animación */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 3. Estilo de los títulos para la transición */
+.faq-item h3 {
+    color: var(--color-primary, #00B4D8); /* El color cian que usas para destacar */
+    transition: color 0.25s ease;
+}
+
+.faq-item p {
+    color: var(--color-text-medium);
+    margin-bottom: 0;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+.faq-item:hover {
+    /* Lo levantamos ligeramente del fondo */
+    transform: translateY(-5px); 
+    
+    /* Añadimos un brillo sutil y elegante */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 
+                0 0 10px rgba(0, 180, 216, 0.4); /* Brillo cian suave */
+    
+    /* Hacemos el borde más visible */
+    border-color: #00B4D8;
+}
+.faq-item:hover h3 {
+    /* El título se vuelve blanco al hacer hover para mayor contraste */
+    color: #FFFFFF; 
+}
+.featured-card .features-list i.fa-check-circle {
+    color: #D3FFD3; /* Verde muy claro para el check en fondo oscuro */
+}
+
+/* Estilo para el botón seleccionado */
+/* Estilo para el botón seleccionado (debe ir en style.css) */
+.js-select-btn.selected {
+    background-color: #4CAF50 !important; /* Verde vibrante */
+    color: white !important;
+    border: 1px solid #4CAF50 !important;
+}
+
+/* RESPONSIVE para la tabla de precios */
+@media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: 1fr; /* Columna única en tabletas/móviles */
+    }
+    .featured-card {
+        transform: scale(1); /* Desactivamos el escalado en móvil */
+    }
+}
+/* ========================================================= */
+/* --- 2. DATOS CLAVE (Historia y Cifras) - ¡CORRECCIÓN FINAL! --- */
+/* ========================================================= */
+.key-data-section { padding: 60px 0; }
+.data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+.data-card {
+    background-color: var(--color-card-dark); 
+    padding: 25px; 
+    border-radius: 10px; 
+    text-align: center;
+    border-bottom: 5px solid var(--secondary-color); 
+    
+    /* Estilos de Animación y Hover */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    border: 1px solid transparent; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.data-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--secondary-color); 
+}
+
+.data-icon { 
+    font-size: 2.5em; 
+    color: var(--primary-color); 
+    margin-bottom: 10px; 
+    filter: drop-shadow(0 0 10px rgba(72, 202, 228, 0.9));
+}
+
+.data-card h3 { 
+    font-size: 1.2em; 
+    color: var(--secondary-color); 
+    margin-top: 0; 
+    font-weight: 700; 
+}
+
+/* ¡SOLUCIÓN PERMANENTE PARA EL TEXTO! */
+.data-card p { 
+    color: var(--color-text-medium) !important; /* Forzamos el color gris claro */
+    line-height: 1.5;
+}
+
+/* Estilo para la cita/nota de advertencia */
+blockquote {
+    margin-top: 40px; 
+    padding: 20px; 
+    border-left: 5px solid var(--secondary-color);
+    background-color: #121A28; 
+    border-radius: 0 8px 8px 0;
+    color: var(--color-text-light) !important; /* ¡FIX DE COLOR! */
+    font-style: italic; 
+    line-height: 1.4;
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+blockquote p {
+    color: var(--color-text-light) !important; /* ¡FIX DE COLOR! */
+    margin: 0 0 15px 0;
+}
+blockquote:hover {
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
+}
+/* ========================================================= */
+/* --- 2. DATOS CLAVE (Historia y Cifras) - PROFESIONAL GRID --- */
+/* ========================================================= */
+.key-data-section { padding: 60px 0; }
+.data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+.data-card {
+    background-color: var(--color-card-dark); 
+    padding: 25px; 
+    border-radius: 10px; 
+    text-align: center;
+    
+    /* Estilos de Animación y Hover */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    border: 3px solid transparent; /* Borde inicial más grueso pero invisible */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    
+    /* Diseño de borde inferior de neón */
+    border-bottom: 5px solid var(--primary-color);
+}
+
+.data-card:hover {
+    transform: translateY(-8px);
+    /* El borde superior e izquierdo/derecho se iluminan */
+    border-color: var(--secondary-color); 
+    /* Sombra de neón más visible para el efecto "premium" */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--secondary-color); 
+}
+
+.data-icon { 
+    font-size: 2.5em; 
+    color: var(--primary-color); 
+    margin-bottom: 10px; 
+    /* Brillo neón para los iconos */
+    filter: drop-shadow(0 0 10px rgba(72, 202, 228, 0.9));
+}
+
+.data-card h3 { 
+    font-size: 1.2em; 
+    color: var(--secondary-color); 
+    margin-top: 0; 
+    font-weight: 700; 
+    /* Efecto de degradado suave en el texto del título */
+    text-shadow: 0 0 5px rgba(72, 202, 228, 0.3);
+}
+
+/* ¡SOLUCIÓN PERMANENTE PARA EL TEXTO! */
+.data-card p { 
+    color: var(--color-text-medium) !important; /* Forzamos el color gris claro */
+    line-height: 1.5;
+}
+
+/* --- Estilo para la Nota Importante (Blockquote) --- */
+blockquote {
+    margin-top: 50px; 
+    padding: 25px; 
+    border-left: 5px solid var(--primary-color);
+    background-color: #1A2233; /* Fondo ligeramente más claro que el de la página */
+    border-radius: 4px;
+    color: var(--color-text-light);
+    font-style: italic; 
+    line-height: 1.5;
+    max-width: 900px; 
+    margin-left: auto; 
+    margin-right: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+blockquote p {
+    color: var(--color-text-light) !important; 
+    margin: 0 0 15px 0;
+}
+blockquote:hover {
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
+}
+.youtube-background-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    transform: translate(-50%, -50%); 
+    
+    /* MODIFICACIÓN CLAVE: Quitamos padding-bottom y forzamos la altura */
+    height: 100%; /* Asegura que se estira para cubrir los 800px del padre */
+    padding-bottom: 0 !important; /* Anulamos el padding que lo limita */
+}
+/* ========================================================= */
+/* --- NUEVO ESTILO: BOTÓN RESERVADA (Verde) --- */
+/* ========================================================= */
+
+.reserved-btn {
+    /* Estilos base (similar al CTA principal) */
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    display: block; /* Ocupa todo el ancho de la tarjeta */
+    margin-top: 15px; /* Separación del botón de reserva principal */
+
+    /* Colores del botón Reservado (Verde) */
+    background-color: #38E165; /* Verde vibrante para destacar */
+    color: var(--color-background-dark) !important; /* Texto oscuro para contraste sobre el verde */
+    border: 2px solid #38E165;
+    
+    /* Animación */
+    transition: all 0.3s ease;
+    cursor: default; /* Quita el cursor de enlace */
+}
+
+.reserved-btn:hover {
+    /* Mantenemos el mismo color, pero añadimos la sombra de neón */
+    background-color: #38E165; 
+    transform: none; /* No se levanta al ser un estado final */
+    box-shadow: 0 0 15px rgba(56, 225, 101, 0.8); /* Sombra de neón verde más fuerte */
+}
+
+/* Si quieres que el botón original de "Reservar" se oculte al usar este */
+/* Esto requiere una estructura HTML más avanzada (ej. un contenedor padre que indique "RESERVADO") */
+/* ========================================================= */
+/* --- ESTILO: BOTÓN SELECCIONADO (Verde) --- */
+/* ========================================================= */
+
+.is-selected {
+    /* Mantenemos las propiedades base de CTA para la forma y el padding */
+    
+    /* Colores del botón SELECCIONADO (Verde) */
+    background-color: #38E165 !important; /* Verde vibrante */
+    color: var(--color-background-dark) !important; /* Texto oscuro para contraste */
+    border: 2px solid #38E165 !important;
+    
+    /* Sombra de neón verde más suave */
+    box-shadow: 0 5px 15px rgba(56, 225, 101, 0.6) !important;
+    
+    /* Aseguramos que no se levante si ya está seleccionado */
+    transform: none !important; 
+}
+
+/* Mejorar el estado hover del botón seleccionado */
+.is-selected:hover {
+    background-color: #4EE47C !important; /* Verde ligeramente más claro al pasar el ratón */
+    box-shadow: 0 0 20px rgba(56, 225, 101, 1) !important; /* Sombra de neón fuerte */
+    cursor: pointer;
+}
+/* =========================================================
+   ESTILOS: SECCIÓN HISTORIA Y LEYENDA (Profesional)
+   ========================================================= */
+
+.sella-cifras-section {
+    padding: 80px 0;
+    text-align: center;
+    background: var(--color-background-darker, #0e122b); /* Fondo aún más oscuro */
+    color: var(--color-text-light, #f0f0f0); 
+    position: relative;
+    overflow: hidden;
+}
+
+.sella-cifras-grid {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    display: grid;
+    /* Define 3 columnas: Cifras | Texto | Mapa */
+    grid-template-columns: 1fr 1.5fr 1fr; 
+    gap: 40px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* --- Estilos de Cifras Destacadas --- */
+
+.cifras-highlight-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cifra-card {
+    background: var(--color-dark-accent, #172442); /* Fondo de tarjeta más oscuro */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(72, 202, 228, 0.2); /* Borde azul suave */
+    transition: transform 0.3s ease;
+}
+
+.cifra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--color-accent, #00B4D8);
+}
+
+.cifra-card i {
+    font-size: 2.5rem;
+    color: var(--color-accent, #00B4D8);
+    margin-bottom: 10px;
+}
+
+.cifra-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-secondary, #48CAE4);
+    line-height: 1.1;
+}
+
+.cifra-label {
+    font-size: 0.9rem;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Estilos de Texto e Historia --- */
+
+.cifras-text h3 {
+    color: var(--color-text-light, #f0f0f0);
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.3;
+    border-bottom: 2px solid var(--color-accent, #00B4D8);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cifras-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* --- Estilos del Mapa --- */
+
+.cifras-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.cifras-map h4 {
+    background: var(--color-accent, #00B4D8);
+    color: var(--color-background-darker, #0e122b);
+    margin: 0;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.cifras-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.cifras-map:hover img {
+    transform: scale(1.05); /* Zoom elegante al pasar el ratón */
+}
+
+.map-caption {
+    font-size: 0.85rem;
+    padding: 10px;
+    background-color: var(--color-background-darker, #0e122b);
+    color: #999;
+    margin: 0;
+    border-top: 1px solid rgba(72, 202, 228, 0.1);
+}
+
+/* --- Media Queries (Adaptación Móvil) --- */
+
+@media (max-width: 1050px) {
+    .sella-cifras-grid {
+        /* Pasa a 1 columna en pantallas medianas */
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    
+    .cifras-highlight-cards {
+        flex-direction: row; /* Las cifras se ponen en fila */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cifra-card {
+        min-width: 150px;
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .cifras-highlight-cards {
+        flex-direction: column; /* Una cifra por línea en móviles pequeños */
+    }
+}
+/* =========================================================
+   SOLUCIÓN FINAL: MANTENER GLOW AMARILLO, CAMBIAR FONDO AZUL CIAN
+   ========================================================= */
+
+/* 1. Seleccionamos la tarjeta Premium con alta especificidad */
+.pricing-card.premium {
+    /* Anulamos el fondo cian brillante y usamos un fondo más oscuro de la paleta */
+    background: var(--color-background-darker, #0e122b) !important; 
+    
+    /* Mantenemos el borde y el box-shadow que causa el brillo amarillo/dorado
+       (Asumiendo que el box-shadow amarillo está en otra regla, o lo re-aplicamos limpio aquí).
+       
+       Si el brillo amarillo original vuelve al hacer esto, es que el color de fondo estaba 
+       integrado en la sombra. Si es así, déjame el box-shadow original. */
+}
+
+/* 2. Estilo del Botón Premium dentro de la tarjeta (para que no sea cian) */
+.pricing-card.premium .secondary-cta-btn {
+    /* Cambiamos el fondo del botón de reservar Premium a un color oscuro con el mismo brillo */
+    background: var(--color-background-dark, #1a1a2e) !important; 
+    color: var(--color-text-light, #f0ff) !important;
+    
+    /* Aseguramos que el botón tenga el contorno amarillo/dorado */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7) !important; 
+}
+/* =========================================================
+   SOLUCIÓN FINAL: Botón Premium Oscuro (Selector HTML Exacto)
+   ========================================================= */
+
+/* Seleccionamos el botón principal (.primary-cta-btn) dentro de la tarjeta destacada (.featured-card) */
+.pricing-card.featured-card .primary-cta-btn {
+    
+    /* Fondo Oscuro (Petróleo) - Anulamos degradados */
+    background: #172442 !important; 
+    background-image: none !important; 
+    
+    /* Color de Texto (Blanco) */
+    color: #f0f0f0 !important; 
+    
+    /* Sombra Amarilla (Mantenemos el glow) */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.7) !important; 
+    
+    /* Anulamos efectos residuales */
+    filter: none !important; 
+}
+/* Cambiamos el fondo de la tarjeta Premium de cian a oscuro, manteniendo el halo */
+.pricing-card.featured-card {
+    /* Fondo oscuro para que se integre mejor */
+    background: var(--color-background-darker, #0e122b) !important;
+    background-image: none !important; 
+    
+    /* Mantenemos el halo amarillo/dorado */
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5) !important; 
+    
+    /* Aseguramos que la tarjeta se levante un poco */
+    transform: translateY(-5px);
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Borde sutil */
+}
