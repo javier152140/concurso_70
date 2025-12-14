@@ -2633,3 +2633,530 @@ blockquote:hover {
     transform: translateY(-5px);
     border: 1px solid rgba(255, 215, 0, 0.3); /* Borde sutil */
 }
+@media (max-width: 900px) {
+    .cart-content {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 30px;
+    }
+}
+
+/* Estilo de las secciones del formulario */
+.form-section {
+    background: var(--color-background-darker, #0e122b);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* Títulos de sección */
+.form-section h3 {
+    color: var(--color-primary, #00B4D8);
+    border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+/* Estilos y animación de los campos de formulario */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-text-light, #f0f0f0);
+    font-size: 0.95em;
+}
+
+.cart-details-form input[type="text"],
+.cart-details-form input[type="email"],
+.cart-details-form input[type="tel"],
+.cart-details-form input[type="date"],
+.cart-details-form input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: #172442; /* Azul oscuro para los campos */
+    color: #f0f0f0;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Animación de Foco (Guía al usuario) */
+.cart-details-form input:focus {
+    border-color: var(--color-primary, #00B4D8);
+    box-shadow: 0 0 10px rgba(0, 180, 216, 0.6);
+    background: #0e122b; /* Oscurece un poco al hacer foco */
+}
+
+/* Estilo del mensaje de carrito vacío */
+#empty-cart-message {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 5px solid var(--color-accent, #FFD700); /* Borde amarillo */
+    border-radius: 4px;
+    font-style: italic;
+    color: #bbb;
+}
+/* Estilo del Resumen del Pedido */
+.cart-summary {
+    background: #172442; /* Azul oscuro del Resumen */
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    height: fit-content; /* Se ajusta al contenido */
+}
+
+.cart-summary h3 {
+    color: var(--color-accent, #FFD700); /* Amarillo/Dorado para destacar */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #ccc;
+}
+
+.cart-summary hr {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 15px 0;
+}
+
+/* Línea TOTAL destacada */
+.summary-line.total {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #f0f0f0;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+/* Estilo del botón de acción principal */
+.main-action-btn.reserve-btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* El degradado cian para un botón que destaque */
+    background: linear-gradient(135deg, #00B4D8, #48CAE4); 
+    color: #111;
+    box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+    transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s;
+}
+
+.main-action-btn.reserve-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 180, 216, 0.6);
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.main-action-btn.reserve-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #444;
+    box-shadow: none;
+    color: #aaa;
+}
+#confirmation-stage {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: var(--color-light); 
+}
+
+.confirmation-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: fadeInScale 0.5s ease-out;
+}
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.success-icon {
+    font-size: 4em;
+    color: #28a745; /* Verde de éxito */
+    margin-bottom: 20px;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.confirmation-box h2 {
+    color: var(--color-accent, #FFD700);
+    margin-bottom: 15px;
+}
+
+.ref-text {
+    font-weight: 700;
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.confirmation-box .main-action-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: var(--color-primary, #00B4D8);
+    color: #111;
+}
+/* =========================================================
+   ANIMACIÓN 1: APARICIÓN ESCALONADA DEL FORMULARIO
+   ========================================================= */
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicar la animación con retraso a cada grupo de formulario */
+.form-section .form-group {
+    opacity: 0; /* Inicialmente oculto */
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Aplicar retrasos escalonados (puedes añadir más si tienes más de 4 grupos) */
+.form-section .form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-section .form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-section .form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-section .form-group:nth-child(4) { animation-delay: 0.4s; }
+/* =========================================================
+   ANIMACIÓN 2: RESPLANDOR ACTIVO DEL TOTAL
+   ========================================================= */
+
+@keyframes subtleGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    }
+}
+
+/* Aplicar el resplandor animado a la línea del total */
+.summary-line.total {
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(255, 215, 0, 0.05); /* Fondo muy sutil */
+    animation: subtleGlow 3s infinite ease-in-out;
+}
+/* =========================================================
+   ANIMACIÓN 3: EFECTO DE ERROR EN BOTÓN DESHABILITADO
+   ========================================================= */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* Aplicar la animación de temblor al botón cuando está deshabilitado y se intenta activar */
+.main-action-btn.reserve-btn:disabled:active { 
+    animation: shake 0.5s;
+    /* Un borde rojo para un feedback visual fuerte de que falta algo */
+    border: 2px solid #dc3545; 
+}
+/* =========================================================
+   ANIMACIÓN 4: ZOOM Y OPACIDAD DE LA SECCIÓN DE RESERVA
+   ========================================================= */
+
+@keyframes zoomFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98); /* Ligeramente más pequeño */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1); /* Tamaño normal */
+    }
+}
+
+/* Aplicar la animación al contenedor principal del formulario y resumen */
+.cart-content {
+    animation: zoomFadeIn 0.8s ease-out forwards;
+    /* Asegúrate de que el contenedor inicialmente no está transformado */
+    opacity: 0;
+}
+
+/* La animación 'forwards' mantiene el estilo final (opacity: 1) */
+/* =========================================================
+   ANIMACIÓN 5: CONFIRMACIÓN VISUAL DE ACTUALIZACIÓN
+   ========================================================= */
+
+@keyframes subtleFlicker {
+    0% { background: #172442; }
+    50% { background: #1f3050; } /* Un tono más claro del azul oscuro */
+    100% { background: #172442; }
+}
+
+/* Clase que se añade/elimina con JavaScript */
+.cart-summary.updated {
+    animation: subtleFlicker 0.4s ease-in-out;
+}
+
+/* Mejora al pasar el ratón sobre el resumen */
+.cart-summary:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+/* Asegúrate de que este CSS está en tu style.css */
+.cart-item-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    color: #f0f0f0; /* Asegura un color visible */
+}
+/* ... otros estilos para .item-name y .item-price ... */
+/* ============================================== */
+/* ESTILOS DE RESERVA Y CONFIRMACIÓN (contacto.html) */
+/* ============================================== */
+
+/* Ocultar el contenido principal o la confirmación */
+.stage.hidden {
+    display: none !important;
+}
+
+/* Estilos para el contenedor de la confirmación */
+#confirmation-stage {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: var(--color-light); /* Asumiendo un color claro */
+}
+
+.confirmation-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.confirmation-icon {
+    /* Color de tu logo/primario, que debería ser azul */
+    color: var(--color-primary, #00B4D8); 
+    font-size: 6rem;
+    margin-bottom: 20px;
+}
+
+.confirmation-box h2 {
+    /* Mantener el verde para el éxito, pero puedes cambiarlo aquí si quieres */
+    color: #28a745; 
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.confirmation-box .subtitle {
+    color: #48CAE4; /* Azul más claro */
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.confirmation-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.confirmation-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.confirmation-details ul li {
+    padding: 5px 0;
+    color: #495057;
+}
+
+.confirmation-box .main-action-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+.confirmation-details p, 
+.confirmation-details ul li {
+    color: var(--color-dark); /* Texto de detalle en color oscuro */
+}
+
+.confirmation-details strong {
+    color: var(--color-primary, #00B4D8); /* Negritas en azul */
+}
+
+.confirmation-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.confirmation-details ul li {
+    padding: 5px 0;
+}
+
+.confirmation-box .cta-message {
+    /* El mensaje de agradecimiento en el azul de tu logo */
+    color: var(--color-primary, #00B4D8); 
+    font-size: 1.15em;
+    font-weight: 500;
+}
+
+.confirmation-box .main-action-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* ============================================== */
+/* ESTILOS DEL CARRITO (contacto.html) */
+/* ============================================== */
+
+.cart-content {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.cart-details-form {
+    flex: 2;
+}
+
+.cart-summary {
+    flex: 1;
+    max-width: 350px;
+    background-color: var(--color-bg-alt);
+    padding: 25px;
+    border-radius: 8px;
+    align-self: flex-start; /* Se pega arriba */
+}
+
+.cart-summary.updated {
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.8); /* Efecto visual al actualizar */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 1.1em;
+}
+
+.summary-line.total {
+    font-weight: 700;
+    font-size: 1.3em;
+    color: var(--color-dark);
+}
+
+.summary-line hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.cart-item-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-qty-input {
+    width: 60px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.item-price-total {
+    font-weight: 700;
+    min-width: 70px;
+    text-align: right;
+}
+
+/* ============================================== */
+/* MEDIA QUERIES PARA ADAPTAR EL CARRITO */
+/* ============================================== */
+
+@media (max-width: 900px) {
+    .cart-content {
+        flex-direction: column;
+    }
+    
+    .cart-summary {
+        max-width: 100%;
+    }
+}

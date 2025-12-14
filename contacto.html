@@ -44,85 +44,66 @@
         </button>
     </header>
 
-    <main id="app-container">
+    <section id="cart-stage" class="stage active">
+    <div class="container">
+        <h2>Reserva tu Aventura en Asturias</h2>
         
-        <section id="cart-stage" class="stage active">
-            <div class="container">
-                <h2>Reserva tu Aventura en Asturias</h2>
+        <div class="cart-content">
+            
+            <div class="cart-details-form">
                 
-                <div class="cart-content">
-                    
-                    <div class="cart-details-form">
-                        
-                        <div class="form-section">
-                            <h3>1. Selecciona Fechas y Participantes</h3>
-                            <form id="booking-form">
-                                <div class="form-group">
-                                    <label for="booking-date">📅 Fecha de la Actividad:</label>
-                                    <input type="date" id="booking-date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="participants-global">👥 Número Total Estimado de Personas:</label>
-                                    <input type="number" id="participants-global" min="1" value="1" required>
-                                </div>
-                                
-                                <h3 style="margin-top: 30px;">2. Detalle de Actividades Seleccionadas (Por Persona)</h3>
-                                
-                                <p class="small-info">Ajusta la cantidad de participantes para una actividad y el resto se sincronizará automáticamente:</p>
-
-                                <div class="cart-items">
-                                    <p id="empty-cart-message">Tu carrito está vacío. <a href="index.html" style="font-weight: 700;">Vuelve a Actividades</a> para añadir.</p>
-                                    </div>
-                            </form>
+                <div class="form-section">
+                    <h3>1. Selecciona Fechas y Participantes</h3>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="booking-date">📅 Fecha de la Actividad:</label>
+                            <input type="date" id="booking-date" required>
                         </div>
                         
-                        <div class="form-section contact-info">
-                            <h3>3. Datos de Contacto</h3>
-                            <div class="form-group">
-                                <label for="client-name">👤 Nombre y Apellidos (Responsable):</label>
-                                <input type="text" id="client-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="client-email">📧 Correo Electrónico:</label>
-                                <input type="email" id="client-email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="client-phone">📱 Teléfono de Contacto:</label>
-                                <input type="tel" id="client-phone" required>
-                            </div>
+                        
+                        
+                        <h3 style="margin-top: 30px;">2. Detalle de Actividades Seleccionadas (Por Persona)</h3>
+                        
+                        <p class="small-info">Ajusta la cantidad de participantes para una actividad y el resto se sincronizará automáticamente:</p>
+
+                        <div id="cart-items">
+                             <p id="empty-cart-message">Tu carrito está vacío. <a href="index.html" style="font-weight: 700;">Vuelve a Actividades</a> para añadir.</p>
                         </div>
-                        
+                    </form>
+                </div>
+                
+                <div class="form-section contact-info">
+                    <h3>3. Datos de Contacto</h3>
+                    <div class="form-group">
+                        <label for="client-name">👤 Nombre y Apellidos (Responsable):</label>
+                        <input type="text" id="client-name" required>
                     </div>
-                    
-                    <div class="cart-summary">
-                        <h3>Resumen del Pedido</h3>
-                        <div class="summary-line"><span>Subtotal:</span> <span id="cart-subtotal">0.00€</span></div>
-                        <div class="summary-line"><span>Impuestos (21% IVA):</span> <span id="cart-tax">0.00€</span></div>
-                        <hr>
-                        <div class="summary-line total"><span>TOTAL A PAGAR:</span> <span id="cart-total">0.00€</span></div>
-                        
-                        <button id="checkout-btn" class="main-action-btn reserve-btn" disabled>Reservar y Pagar Ahora</button>
-                        <a href="index.html" class="secondary-action-btn" style="display: block; text-align: center;">Volver a Actividades</a>
+                    <div class="form-group">
+                        <label for="client-email">📧 Correo Electrónico:</label>
+                        <input type="email" id="client-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-phone">📱 Teléfono de Contacto:</label>
+                        <input type="tel" id="client-phone" required>
                     </div>
                 </div>
+                
             </div>
-        </section>
-
-        <section id="confirmation-stage" class="stage hidden">
-            <div class="container confirmation-container"> 
-                <div class="confirmation-box">
-                    <i class="fas fa-check-circle success-icon"></i>
-                    <h2>🎉 ¡Reserva Realizada con Éxito! 🎉</h2>
-                    <p>Gracias por confiar en Aventura Sella. Te esperamos en Arriondas.</p>
-                    <p class="ref-text">Hemos enviado un correo electrónico de confirmación con los detalles de tu reserva.</p>
-                    <p class="ref-text">Referencia de Reserva: **#AS54321**</p>
-                    <button class="main-action-btn">Cerrar</button>
-                </div>
+            
+            <div class="cart-summary">
+                <h3>Resumen del Pedido</h3>
+                <div class="summary-line"><span>Subtotal:</span> <span id="cart-subtotal">0.00€</span></div>
+                <div class="summary-line"><span>Impuestos (21% IVA):</span> <span id="cart-tax">0.00€</span></div>
+                <hr>
+                <div class="summary-line total"><span>TOTAL A PAGAR:</span> <span id="cart-total">0.00€</span></div>
+                
+                <button id="checkout-btn" class="main-action-btn reserve-btn" disabled>Reservar y Pagar Ahora</button>
+                <a href="index.html" class="secondary-action-btn" style="display: block; text-align: center;">Volver a Actividades</a>
             </div>
-        </section>
-        
-    </main>
-
+            
+        </div>
+    </div>
+</section>
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-copyright">
