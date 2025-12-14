@@ -119,17 +119,25 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
             display: flex;
             gap: 30px;
         }
-        .menu-item {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 5px 0;
-            position: relative;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .menu-item:hover, .menu-item.active {
-            color: var(--secondary-color); 
-        }
+       .menu-item {
+    /* Mantiene los estilos originales de tu texto */
+    padding: 0 15px;
+    height: 100%; /* Asegura que el padding/borde esté bien alineado */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+    
+    /* 1. ELIMINAR EL BORDE POR DEFECTO */
+    border-bottom: 3px solid transparent; /* Pone el borde invisible al principio */
+    
+    /* 2. TRANSICIÓN SUAVE para la línea */
+    transition: border-bottom 0.3s ease; 
+    
+    /* Estilos de texto... */
+    color: white; 
+    text-decoration: none;
+    font-weight: 500;
+}
+        
         .menu-item::after {
             content: '';
             position: absolute;
@@ -142,9 +150,13 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
             transform: translateX(-50%);
             border-radius: 5px;
         }
-        .menu-item:hover::after, .menu-item.active::after {
-            width: 100%;
-        }
+        
+      
+
+/* 4. MANTIENE LA LÍNEA AZUL EN EL ELEMENTO ACTIVO (el que ya tienes) */
+.menu-item.active {
+    border-bottom: 3px solid #00B4D8; /* Color azul de la línea activa */
+}
         .menu-toggle {
             display: none;
             background: none;
