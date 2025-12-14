@@ -226,49 +226,116 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
         }
         
         /* --- PHILOSOPHY (Bordes más suaves y orgánicos) --- */
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .philosophy-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-ambient);
-            border: 2px solid var(--primary-color);
-        }
-        
-        .philosophy-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: brightness(0.7);
-            transition: filter 0.5s ease;
-            border-radius: 20px;
-        }
-        
-        .philosophy-image:hover img {
-            filter: brightness(1.0);
-        }
-        
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-            padding: 20px;
-            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7); 
-        }
-        .image-overlay p {
-            font-style: italic;
-            margin: 0;
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
+        /* --- PHILOSOPHY (Ajustes para el mapa) --- */
+
+/* --- PHILOSOPHY (AJUSTES PARA MÁS PROFESIONALIDAD) --- */
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* 45% info | 55% mapa */
+    gap: 60px;
+    align-items: center;
+}
+
+/* Bloques de Información */
+.info-block {
+    background-color: var(--mid-dark); /* Fondo más oscuro para mejor contraste */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    border-left: 5px solid var(--primary-color); /* Toque profesional azul */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-block:hover {
+    transform: translateY(-5px); /* Efecto 3D sutil */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 10px var(--primary-color);
+}
+
+.info-block h3 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.info-block p {
+    color: var(--text-light);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Título de Ubicación sobre el mapa */
+.map-title {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Estilo del contenedor general (el marco que envuelve el mapa) */
+.philosophy-image {
+    position: relative;
+    border-radius: 20px;
+    box-shadow: var(--shadow-ambient);
+    transition: box-shadow 0.5s ease;
+    padding: 15px; /* Padding reducido para centrar el mapa */
+    background: var(--dark-background); 
+    border: 3px solid var(--primary-color); /* Marco más definido */
+    overflow: hidden; 
+}
+
+/* Contenedor del Iframe del Mapa */
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Sombra más oscura para profundidad */
+    transition: transform 0.5s ease;
+}
+
+.map-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(72, 202, 228, 0.7); /* Destaca más al pasar el ratón */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    display: block;
+    border: none;
+}
+
+/* El pie de página de la dirección */
+.image-overlay {
+    position: static; 
+    padding: 10px 0 0 0;
+    text-align: center;
+    background: transparent;
+    box-shadow: none;
+}
+
+.image-overlay p {
+    font-style: italic; /* La dirección como pie de foto */
+    margin: 0;
+    color: var(--text-light);
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+
+/* Media Query para pantallas pequeñas (Necesario para apilarlos correctamente) */
+@media (max-width: 992px) {
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .philosophy-image {
+        order: -1; /* Mueve el mapa arriba en móviles */
+    }
+}
 
         .info-block {
             margin-bottom: 30px;
