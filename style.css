@@ -367,71 +367,7 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
         }
 
         /* --- RIVER FEATURES (Timeline más fluido) --- */
-        .river-container {
-            max-width: 900px;
-        }
-        
-        .river-timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .river-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--mid-dark));
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            display: flex;
-            margin-bottom: 60px;
-            position: relative;
-            justify-content: flex-start;
-        }
-        
-        .timeline-item.right-aligned {
-            justify-content: flex-end;
-        }
-
-        .timeline-dot {
-            width: 35px;
-            height: 35px;
-            background: var(--primary-color);
-            color: var(--dark-background);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            z-index: 10;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 12px rgba(0, 180, 216, 0.7);
-        }
-        
-        .timeline-content {
-            width: 45%;
-            padding: 25px;
-            background: #18283b;
-            border-radius: 15px;
-            box-shadow: var(--shadow-ambient);
-            border: 1px solid rgba(72, 202, 228, 0.1);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content { margin-right: 55%; }
-        .timeline-item:nth-child(even) .timeline-content { margin-left: 55%; }
-
-        .timeline-content h3 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-            font-size: 1.4em;
-        }
+       /* --- LÍNEA DE TIEMPO (PROFESIONAL) --- */
 
         /* USPs Section (Efecto de "tarjeta flotante") */
         .usp-grid {
@@ -556,10 +492,9 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
         /* --- ANIMACIONES SCROLL-REVEAL AJUSTADAS (Más orgánicas) --- */
         
         .scroll-reveal {
-            /* Curva de animación profesional y suave (la clave del 'toque humano') */
-            transition: opacity 1.0s cubic-bezier(0.25, 1, 0.5, 1), 
-                        transform 1.0s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    perspective: 1000px; /* Necesario para los flips */
+}
         
         .scroll-reveal.fade-in-up {
             transform: translateY(30px);
@@ -651,15 +586,7 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
             .timeline-item.right-aligned {
                 justify-content: flex-start;
             }
-            .timeline-dot {
-                left: 20px;
-                transform: translateX(-50%);
-            }
-            .timeline-content {
-                width: 100%;
-                margin-left: 60px !important; 
-                margin-right: 0 !important;
-            }
+            
             .usp-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
@@ -1475,5 +1402,241 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
 
     .hero-image {
         max-width: 90%;
+    }
+}
+/* ========================================================= */
+/* --- 1. LÍNEA DE TIEMPO: ESTRUCTURA BASE Y LÍNEA CENTRAL --- */
+/* ========================================================= */
+
+.river-timeline {
+    position: relative;
+    padding: 20px 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* La línea vertical central */
+.river-timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-color); 
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px; 
+    z-index: 1;
+}
+
+/* Base de cada item */
+.timeline-item {
+    width: 50%;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 80px; 
+    z-index: 2;
+}
+
+/* El punto de conexión (el círculo/dot) */
+.timeline-dot {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 3;
+    top: 0; 
+    /* Estilos visuales del punto */
+    background-color: var(--secondary-color); 
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color); 
+    text-align: center;
+    line-height: 40px;
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.8);
+    transition: all 0.3s ease; /* Necesario para la animación hover */
+}
+
+/* ========================================================= */
+/* --- 2. CONTENIDO Y MEJORAS DE PROFESIONALISMO --- */
+/* ========================================================= */
+
+.timeline-content {
+    background-color: var(--color-card-dark);
+    padding: 20px; /* Padding cómodo para separar el texto del borde */
+    border-radius: 12px;
+    border: 3px solid var(--primary-color); 
+    min-height: 180px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* TÍTULOS (H3): Añadimos sombra para destacar */
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Sombra sutil */
+}
+
+/* PÁRRAFOS (P): Mejoramos la legibilidad */
+.timeline-content p {
+    text-align: justify; /* Alineación justificada para un aspecto más formal */
+    line-height: 1.65; /* Espaciado entre líneas cómodo */
+    margin-top: 10px;
+}
+
+/* EFECTO INTERACTIVO: Amplía el punto al pasar el ratón por el ítem */
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.15); /* Crece ligeramente */
+    box-shadow: 0 0 20px 5px var(--secondary-color); /* Sombra más fuerte */
+}
+
+/* ========================================================= */
+/* --- 3. ALINEACIÓN DE ESCRITORIO --- */
+/* ========================================================= */
+
+/* ÍTEMS DE LA IZQUIERDA */
+.timeline-item:not(.right-aligned) {
+    left: 0; 
+    padding-right: 70px;
+    padding-left: 10px;
+}
+.timeline-item:not(.right-aligned) .timeline-dot {
+    right: -20px;
+    left: auto;
+}
+
+/* ÍTEMS DE LA DERECHA (.right-aligned) */
+.right-aligned {
+    left: 50%; 
+    padding-left: 70px;
+    padding-right: 10px;
+}
+.right-aligned .timeline-dot {
+    left: -20px;
+    right: auto;
+}
+
+/* EFECTO HOVER DE DESPLAZAMIENTO EN LA TARJETA */
+.timeline-item:not(.right-aligned) .timeline-content:hover {
+    transform: translateX(-15px) translateY(-5px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+.right-aligned .timeline-content:hover {
+    transform: translateX(15px) translateY(-5px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ========================================================= */
+/* --- 4. RESPONSIVE MÓVIL (Acabado Profesional) --- */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+    /* Mueve la línea al lado izquierdo */
+    .river-timeline::after {
+        left: 31px; 
+        margin-left: 0;
+    }
+    
+    /* Todos los items ocupan el 100% y se alinean a la izquierda */
+    .timeline-item, .right-aligned {
+        width: 100%;
+        left: 0; 
+        padding-left: 70px;
+        padding-right: 25px; /* Más espacio en el lado derecho para no pegarse */
+    }
+    
+    /* Mueve el DOT (punto) al borde de la nueva línea central */
+    .timeline-item .timeline-dot, .right-aligned .timeline-dot {
+        left: 8px; 
+        right: auto;
+    }
+    
+    /* Desactivar la animación de desplazamiento en móvil */
+    .scroll-reveal {
+        transform: none !important;
+    }
+}
+/* --- BANNER DE LA PÁGINA (VENTAJAS) --- */
+.hero-page-banner {
+    /* Fondo con una imagen de alta calidad del río (sustituir URL) */
+    background-image: url('images/sella-background-pro.jpg'); 
+    background-size: cover;
+    background-position: center 70%;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff; /* Aseguramos texto blanco sobre el fondo */
+    position: relative;
+    z-index: 1;
+}
+/* Overlay para mejorar el contraste del texto */
+.hero-page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65); /* Tonalidad oscura para contraste */
+    z-index: 2;
+}
+.hero-page-banner .hero-content {
+    z-index: 3; /* El contenido siempre debe estar sobre el overlay */
+    max-width: 800px;
+    margin: 0 auto;
+}
+.page-title {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--secondary-color); /* Usa tu color de acento */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    font-weight: 900;
+}
+.subtitle {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+/* --- CUADRÍCULA DE VENTAJAS --- */
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+.advantage-card {
+    background-color: var(--color-card-dark);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.advantage-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7), 0 0 15px var(--secondary-color);
+}
+.advantage-icon {
+    font-size: 3em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 180, 216, 0.8);
+}
+.advantage-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVE para la cuadrícula */
+@media (max-width: 992px) {
+    .grid-3-cols {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+    }
+}
+@media (max-width: 600px) {
+    .grid-3-cols {
+        grid-template-columns: 1fr; /* 1 columna en móviles */
     }
 }

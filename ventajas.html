@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventajas Únicas | Aventura Sella</title>
-    <link href="style.css" rel="stylesheet">
+    <title>Descenso del Sella | Historia y Leyenda - Cangas Aventuras</title>
+    
+    <link href="style.css" rel="stylesheet" type="text/css"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     
@@ -27,6 +29,7 @@
             </div>
             <div class="logo-text">Aventura Sella</div>
         </a>
+
         <nav class="main-menu" id="mainMenu">
             <a href="index.html" class="menu-item">Inicio</a>
             <a href="nuestra-esencia.html" class="menu-item">Nuestra Esencia</a>
@@ -34,53 +37,111 @@
             <a href="ventajas.html" class="menu-item active">Ventajas Únicas</a>
             <a href="contacto.html" class="menu-item">Reserva / Contacto</a>
         </nav>
+
         <button class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </header>
+    
+    <main id="app-container">
 
-    <section class="section secondary-section" id="usps">
-        <div class="container usps-container">
-            <h2 class="section-title scroll-reveal fade-in-up">Lo que nos hace diferentes</h2>
-            <div class="usp-grid">
-                <div class="usp-item scroll-reveal scale-up" data-delay="0.1">
-                    <div class="usp-icon">🛶</div>
-                    <h3>Canoas de Última Generación</h3>
-                    <p>Material de primera calidad, cómodo y con asientos ergonómicos. Navega seguro y sin molestias.</p>
+        <section class="hero-page-banner" id="descenso-hero">
+            <div class="container hero-content scroll-reveal fade-in-up">
+                <h1 class="page-title">Descenso del Sella: Historia, Leyenda y la Aventura que te Espera</h1>
+                <p class="subtitle">Descubre por qué esta fiesta de Interés Turístico Internacional es la elección de miles de aventureros. Datos clave, recorrido y cómo vivir la mejor experiencia en el Sella.</p>
+                <a href="contacto.html" class="cta-button primary-cta-btn">¡Reserva Tu Kayak Hoy!</a>
+            </div>
+        </section>
+
+        <section class="section key-data-section">
+            <div class="container">
+                <h2 class="section-title scroll-reveal fade-in-up">El Sella en Cifras: Historia y Leyenda</h2>
+                
+                <div class="data-grid">
+                    
+                    <div class="data-card scroll-reveal zoom-in-delay" data-delay="0.1">
+                        <i class="fas fa-calendar-alt data-icon"></i>
+                        <h3>Fecha de la Fiesta</h3>
+                        <p>El evento oficial, conocido como las **"Piraguas"**, se celebra el **primer sábado de agosto** después del día 2.</p>
+                    </div>
+                    
+                    <div class="data-card scroll-reveal zoom-in-delay" data-delay="0.3">
+                        <i class="fas fa-trophy data-icon"></i>
+                        <h3>Creación Histórica</h3>
+                        <p>La competición nació en **1930** como un simple desafío. Hoy es Fiesta de Interés Turístico Internacional.</p>
+                    </div>
+                    
+                    <div class="data-card scroll-reveal zoom-in-delay" data-delay="0.5">
+                        <i class="fas fa-users data-icon"></i>
+                        <h3>Participantes (Día Oficial)</h3>
+                        <p>La competición congrega a más de **1.000 palistas de élite**, además de las **miles de personas** que bajan recreativamente el río en verano.</p>
+                    </div>
+
                 </div>
-                <div class="usp-item scroll-reveal scale-up" data-delay="0.2">
-                    <div class="usp-icon">🚌</div>
-                    <h3>Logística Sin Fallos</h3>
-                    <p>Traslados de vuelta inmediatos al finalizar el recorrido. Cero esperas. Tu tiempo es valioso.</p>
+                
+                <blockquote class="scroll-reveal fade-in-up">
+                    <p>⚠️ **Nota Importante sobre Precios:** El precio de la competición oficial (descenso federado) es diferente al precio del **descenso turístico recreativo** ofrecido por Cangas Aventuras. Nuestro precio es por persona/paquete e incluye equipo premium y transporte.</p>
+                    <a href="contacto.html" class="cta-button secondary-cta-btn small-btn">Ver Nuestros Paquetes y Precios</a>
+                </blockquote>
+                
+            </div>
+        </section>
+
+        <section class="section map-location-section bg-dark-alt">
+            <div class="container map-content-wrapper">
+                
+                <div class="map-text scroll-reveal fade-in-left">
+                    <h2 class="section-title">Mapa del Recorrido: Arriondas a Ribadesella</h2>
+                    <p>El recorrido oficial de la competición es de **20 km**, desde Arriondas hasta la meta en Ribadesella. Para el descenso turístico, ofrecemos rutas de **7 km** (corta) o **15 km** (larga), adaptándonos a tu tiempo y condición física.</p>
+                    <div class="base-location">
+                        <i class="fas fa-route"></i>
+                        <p><strong>Distancias Turísticas:</strong> 7 km (2-3 h) o 15 km (4-5 h).</p>
+                    </div>
                 </div>
-                <div class="usp-item scroll-reveal scale-up" data-delay="0.3">
-                    <div class="usp-icon">⛰️</div>
-                    <h3>Conocimiento Local</h3>
-                    <p>Somos de aquí. Nuestros guías te contarán las historias del Sella y te mostrarán los rincones que nadie conoce.</p>
+                
+                <div class="map-responsive-container scroll-reveal fade-in-right">
+                    [Aquí iría el IFRAME del mapa del Descenso del Sella]
                 </div>
-                <div class="usp-item scroll-reveal scale-up" data-delay="0.4">
-                    <div class="usp-icon">📸</div>
-                    <h3>Recuerdos Vivos</h3>
-                    <p>Te regalamos un álbum digital profesional. Queremos que te lleves la magia de Asturias a casa.</p>
+
+            </div>
+        </section>
+        
+        <section class="section advantage-grid">
+            <div class="container">
+                <h2 class="section-title scroll-reveal fade-in-up">El Estándar Cangas Aventuras: Por Qué Elegirnos</h2>
+                
+                <div class="grid-3-cols">
+                    
+                    <div class="advantage-card scroll-reveal zoom-in-delay" data-delay="0.1">
+                        <i class="fas fa-temperature-high advantage-icon"></i>
+                        <h3>Base de Operaciones Climatizada</h3>
+                        <p>Vestuarios, duchas y áreas comunes con calefacción/aire acondicionado. La comodidad es lo primero.</p>
+                    </div>
+                    
+                    <div class="advantage-card scroll-reveal zoom-in-delay" data-delay="0.3">
+                        <i class="fas fa-skiing advantage-icon"></i>
+                        <h3>Material Homologado y Premium</h3>
+                        <p>Kayaks de fibra (más rápidos y estables), chalecos y palas de alta calidad para tu seguridad.</p>
+                    </div>
+                    
+                    <div class="advantage-card scroll-reveal zoom-in-delay" data-delay="0.5">
+                        <i class="fas fa-bus-alt advantage-icon"></i>
+                        <h3>Transporte Propio y Frecuente</h3>
+                        <p>Olvídate de esperas. Nuestra flota te recoge en el punto final del recorrido con alta frecuencia.</p>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section cta-banner" id="secondary-cta">
-        <div class="container cta-content scroll-reveal zoom-in">
-            <h2>¡Tu Desconexión de Fin de Semana te Espera!</h2>
-            <p>Asturias es el paraíso verde: canoas, montaña, barrancos... ¿Empezamos a planificar?</p>
-            <a href="contacto.html" class="cta-button secondary-cta-btn">¡Solicitar Presupuesto Personalizado!</a>
-        </div>
-    </section>
-
+    </main>
+    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-copyright">
-                © 2025 Aventura Sella. Todos los derechos reservados. | Operado desde Arriondas, Asturias.
+                © 2025 Cangas Aventuras. Todos los derechos reservados. | Operado desde Arriondas, Asturias.
             </div>
             <div class="footer-links">
                 <a href="#">Política de Privacidad</a>
@@ -88,11 +149,11 @@
             </div>
         </div>
     </footer>
-
+    
     <div class="scroll-to-top" id="scrollToTop">
         <span>↑</span>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> 
 </body>
 </html>
