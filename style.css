@@ -147,7 +147,6 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
             height: 2px;
             background-color: var(--primary-color);
             transition: width 0.3s ease, transform 0.3s ease;
-            transform: translateX(-50%);
             border-radius: 5px;
         }
         
@@ -339,15 +338,8 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
 
 
 /* Media Query para pantallas pequeñas (Necesario para apilarlos correctamente) */
-@media (max-width: 992px) {
-    .philosophy-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    .philosophy-image {
-        order: -1; /* Mueve el mapa arriba en móviles */
-    }
-}
+
+
 
         .info-block {
             margin-bottom: 30px;
@@ -568,66 +560,7 @@ Paleta: Azul/Celeste (#00B4D8, #48CAE4)
         .scroll-reveal[data-delay="0.8"] { transition-delay: 0.8s; }
 
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .section {
-                min-height: auto;
-                padding: 80px 0;
-            }
-            .main-title {
-                font-size: 3.8em;
-            }
-            .section-title {
-                font-size: 2.8em;
-            }
-            .philosophy-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-            .philosophy-image {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-            .river-timeline::before {
-                left: 20px;
-            }
-            .timeline-item {
-                justify-content: flex-start;
-                margin-bottom: 40px;
-            }
-            .timeline-item.right-aligned {
-                justify-content: flex-start;
-            }
-            
-            .usp-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            .cta-content h2 {
-                font-size: 2.5em;
-            }
-        }
-
-        @media (max-width: 576px) {
-             .header {
-                padding: 0 15px;
-            }
-            .main-title {
-                font-size: 2.8em;
-            }
-            .subtitle {
-                font-size: 1.1em;
-            }
-            .section-title {
-                font-size: 2em;
-            }
-            .usp-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-block h3 {
-                font-size: 1.4em;
-            }
-        }
+        
         /* =======================================
    1. GLOBAL & RESET
    ======================================= */
@@ -821,24 +754,10 @@ a:hover {
 /* --- REGLAS DE RESPONSIVIDAD (Media Queries) --- */
 
 /* Para pantallas medianas (tabletas grandes, por ejemplo) */
-@media (max-width: 1024px) {
-    .activities-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 700px;
-        gap: 25px;
-    }
-}
+
 
 /* Para pantallas pequeñas (móviles) */
-@media (max-width: 768px) {
-    .activities-grid {
-        /* En móviles, solo 1 columna */
-        grid-template-columns: 1fr;
-        gap: 20px;
-        width: 100%;
-        padding: 0 20px;
-    }
-}
+
 
 
 /* --- AÑADIR/MODIFICAR ESTILOS DE TARJETA --- */
@@ -1356,49 +1275,40 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
     border-radius: 5px;
     border: 1px solid rgba(0, 180, 216, 0.5);
 }
+/* CLAVE 1: Contenedor padre para que las columnas se alineen */
 .hero-content-flex {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center; 
+    align-items: center; /* ESTO ES LO QUE ALINEA VERTICALMENTE */
     max-width: 1200px;
-    margin: 40px auto 60px auto;
+    margin: 40px auto 100px auto; 
+    gap: 50px; 
+    padding: 0 20px; 
 }
+
+/* CLAVE 2: Ajustes a la tarjeta de texto */
 .hero-content-flex .tarjetas {
-    margin: 0;
+    margin: 0; 
     flex-shrink: 0;
-}
-/* 📏 Separación entre tarjeta de introducción y actividades */
-.hero-content-flex {
-    margin-bottom: 100px; /* ajusta este valor a tu gusto */
-}
-.hero-content-flex {
-    display: flex;
-    align-items: center;
-    gap: 50px;
+    flex-basis: 50%;
+    max-width: 550px; 
 }
 
-.hero-image {
-    max-width: 420px;
-    width: 100%;
+/* CLAVE 3: Ajustes al contenedor de la imagen (¡Nombre corregido!) */
+.hero-image-container { 
+    flex-basis: 50%;
+    max-width: 100px;
     flex-shrink: 0;
+    /* ... y el resto de los estilos de animación y bordes que te di ... */
 }
-
-.hero-image img {
+/* Estilo para la imagen que ESTÁ DENTRO */
+.hero-image-container img {
     width: 100%;
-    height: auto;
-    max-height: 280px;
+    height: auto; 
     object-fit: cover;
     border-radius: 18px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5); 
 }
-
-.hero-image {
-    animation: floatImage 8s ease-in-out infinite;
-}
-
-.hero-image:hover img {
-    transform: scale(1.03);
-}
-
 @keyframes floatImage {
     0% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
@@ -1473,13 +1383,13 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
 
 .timeline-content {
     background-color: var(--color-card-dark);
-    padding: 20px; /* Padding cómodo para separar el texto del borde */
+    /* ¡AUMENTA ESTE VALOR PARA MAYOR SEPARACIÓN! */
+    padding: 80px; 
     border-radius: 12px;
     border: 3px solid var(--primary-color); 
     min-height: 180px; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 /* TÍTULOS (H3): Añadimos sombra para destacar */
 .timeline-content h3 {
     color: var(--primary-color);
@@ -1568,19 +1478,7 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
     }
 }
 /* --- BANNER DE LA PÁGINA (VENTAJAS) --- */
-.hero-page-banner {
-    /* Fondo con una imagen de alta calidad del río (sustituir URL) */
-    background-image: url('images/sella-background-pro.jpg'); 
-    background-size: cover;
-    background-position: center 70%;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #ffffff; /* Aseguramos texto blanco sobre el fondo */
-    position: relative;
-    z-index: 1;
-}
+
 /* Overlay para mejorar el contraste del texto */
 .hero-page-banner::before {
     content: '';
@@ -1642,16 +1540,7 @@ transition: transform 0.6s ease, box-shadow 0.6s ease, opacity 0.6s ease, z-inde
 }
 
 /* RESPONSIVE para la cuadrícula */
-@media (max-width: 992px) {
-    .grid-3-cols {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
-    }
-}
-@media (max-width: 600px) {
-    .grid-3-cols {
-        grid-template-columns: 1fr; /* 1 columna en móviles */
-    }
-}
+
 /* ========================================================= */
 /* --- 0. VARIABLES Y ESTILOS BASE (Asegúrate que existen) --- */
 /* ========================================================= */
@@ -1906,41 +1795,9 @@ blockquote a {
 /* --- 5. RESPONSIVE (Ajustes para Tablet y Móvil) --- */
 /* ========================================================= */
 
-@media (max-width: 992px) {
-    .grid-3-cols, .data-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
-    }
-}
 
-@media (max-width: 850px) {
-    .map-content-wrapper {
-        flex-direction: column; /* Apila el texto y el mapa */
-    }
-    .map-text {
-        padding-right: 0;
-        margin-bottom: 30px;
-    }
-    .map-responsive-container {
-        width: 100%;
-        max-width: 100%;
-        height: 300px;
-    }
-    .page-title {
-        font-size: 2em;
-    }
-    .hero-page-banner {
-        min-height: 350px;
-    }
-}
 
-@media (max-width: 600px) {
-    .grid-3-cols, .data-grid {
-        grid-template-columns: 1fr; /* 1 columna en móviles */
-    }
-    .section {
-        padding: 40px 0;
-    }
-}
+
 /* ========================================================= */
 /* --- 1. HERO CON VIDEO DE FONDO (Para más 'Chicha') --- */
 /* ========================================================= */
@@ -2215,14 +2072,7 @@ blockquote a {
 }
 
 /* RESPONSIVE para la tabla de precios */
-@media (max-width: 992px) {
-    .pricing-grid {
-        grid-template-columns: 1fr; /* Columna única en tabletas/móviles */
-    }
-    .featured-card {
-        transform: scale(1); /* Desactivamos el escalado en móvil */
-    }
-}
+
 /* ========================================================= */
 /* --- 2. DATOS CLAVE (Historia y Cifras) - ¡CORRECCIÓN FINAL! --- */
 /* ========================================================= */
@@ -2563,30 +2413,9 @@ blockquote:hover {
 
 /* --- Media Queries (Adaptación Móvil) --- */
 
-@media (max-width: 1050px) {
-    .sella-cifras-grid {
-        /* Pasa a 1 columna en pantallas medianas */
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
-    
-    .cifras-highlight-cards {
-        flex-direction: row; /* Las cifras se ponen en fila */
-        flex-wrap: wrap;
-        justify-content: center;
-    }
 
-    .cifra-card {
-        min-width: 150px;
-        flex: 1;
-    }
-}
 
-@media (max-width: 600px) {
-    .cifras-highlight-cards {
-        flex-direction: column; /* Una cifra por línea en móviles pequeños */
-    }
-}
+
 /* =========================================================
    SOLUCIÓN FINAL: MANTENER GLOW AMARILLO, CAMBIAR FONDO AZUL CIAN
    ========================================================= */
@@ -2645,12 +2474,7 @@ blockquote:hover {
     transform: translateY(-5px);
     border: 1px solid rgba(255, 215, 0, 0.3); /* Borde sutil */
 }
-@media (max-width: 900px) {
-    .cart-content {
-        grid-template-columns: 1fr; /* Una sola columna en móvil */
-        gap: 30px;
-    }
-}
+
 
 /* Estilo de las secciones del formulario */
 .form-section {
@@ -3163,12 +2987,643 @@ blockquote:hover {
 /* MEDIA QUERIES PARA ADAPTAR EL CARRITO */
 /* ============================================== */
 
-@media (max-width: 900px) {
-    .cart-content {
-        flex-direction: column;
+/* ======================================================== */
+/* 1. ADAPTACIÓN PARA PANTALLAS PEQUEÑAS (MÓVIL Y TABLET) */
+/* Se activa cuando el ancho máximo es de 850px */
+/* ======================================================== */
+@media (max-width: 850px) {
+
+    /* --- MENÚ MÓVIL (El JS añade la clase 'open' para mostrarlo) --- */
+    .main-menu {
+        /* Esconde el menú fuera de la pantalla por defecto */
+        position: fixed;
+        top: 0;
+        right: -300px; 
+        width: 300px;
+        height: 100%;
+        background-color: var(--color-background-dark); 
+        padding: 80px 30px 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+        flex-direction: column; /* Apila los enlaces verticalmente */
+        align-items: flex-start;
+    }
+
+    /* Muestra el menú cuando el JavaScript le añade la clase 'open' */
+    .main-menu.open {
+        right: 0; 
     }
     
-    .cart-summary {
-        max-width: 100%;
+    .main-menu a {
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+        color: var(--color-text-light); 
+        text-align: left;
+        font-size: 1.1rem;
     }
+
+    /* --- BOTÓN HAMBURGUESA --- */
+    .menu-toggle {
+        display: flex; /* Muestra el botón de hamburguesa solo en móvil */
+        position: relative; 
+        z-index: 1000;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background: var(--color-text-light);
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    /* --- CONTROL DE SCROLL --- */
+    body.menu-open {
+        overflow: hidden; /* Evita el scroll de la página principal */
+    }
+    
+    /* --- AJUSTES GENERALES DEL HEADER --- */
+    .header {
+        padding: 15px 20px;
+        /* Si tu header es flex, asegúrate de que el logo y la hamburguesa quepan */
+    }
+    
+    /* --- AJUSTES DE CONTENIDO (Carrusel) --- */
+    .activity-card {
+        max-width: 100%;
+        /* El carrusel necesita espacio en móvil, si usas padding general, ajústalo aquí */
+    }
+
+}
+
+/* ======================================================= */
+/* 2. DISEÑO DE ESCRITORIO (Para resetear estilos móviles) */
+/* Se activa cuando el ancho mínimo es de 851px */
+/* ======================================================= */
+@media (min-width: 851px) {
+    .menu-toggle {
+        display: none; /* Esconde el botón de hamburguesa en escritorio */
+    }
+    .main-menu {
+        /* Asegura que el menú se vea siempre en escritorio */
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        box-shadow: none;
+        background: transparent;
+    }
+    /* Reinicia el bloqueo de scroll */
+    body.menu-open {
+        overflow: auto;
+    }
+}
+
+
+
+/* Estado visible: El JavaScript añade esta clase */
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* EFECTOS DE RETRASO (para que los elementos aparezcan en cascada) */
+.scroll-reveal[data-delay="0.1"] { transition-delay: 0.1s; }
+.scroll-reveal[data-delay="0.3"] { transition-delay: 0.3s; }
+.scroll-reveal[data-delay="0.5"] { transition-delay: 0.5s; }
+.scroll-reveal[data-delay="0.7"] { transition-delay: 0.7s; }
+.scroll-reveal[data-delay="0.9"] { transition-delay: 0.9s; }
+
+/* Animaciones laterales */
+.scroll-reveal.fade-in-left { transform: translateX(-50px); }
+.scroll-reveal.fade-in-right { transform: translateX(50px); }
+.scroll-reveal.fade-in-left.visible,
+.scroll-reveal.fade-in-right.visible {
+    transform: translateX(0);
+}
+/* Animación de flotación (para la imagen Hero) */
+@keyframes floatAnim {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-10px); }
+}
+
+/* ======================================= */
+/* 2. HERO Y TÍTULOS DE PÁGINA */
+/* ======================================= */
+
+/* Sección Hero de la página de Esencia */
+#mission-vision-hero {
+    height: 60vh;
+    /* REEMPLAZA URL_DE_TU_IMAGEN_DE_FONDO.jpg con tu imagen */
+    background-image: url('canoa.jpg'); 
+    background-size: cover;
+    background-position: center 30%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-secondary .hero-content-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-secondary .hero-info-text {
+    max-width: 50%;
+}
+
+
+
+/* Títulos de sección profesionales */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primary, #00B4D8); /* Color principal de acento */
+    border-radius: 2px;
+}
+
+/* ======================================= */
+/* 3. SECCIÓN DE PILARES (MISIÓN, VISIÓN) */
+/* ======================================= */
+
+#pilares {
+    padding: 60px 0;
+}
+
+.pillars-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Tarjetas con efecto 'frosted' (si el fondo de la sección es oscuro/imagen) */
+.pillar-card {
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px); 
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.pillar-card .card-header i {
+    font-size: 2.5rem;
+    color: var(--color-primary, #48CAE4);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.pillar-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-text-light); 
+    margin-bottom: 15px;
+}
+
+.pillar-card p, .pillar-card .value-list {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+}
+
+.pillar-card .value-list {
+    list-style: none;
+    padding: 0;
+}
+
+.pillar-card .value-list i {
+    color: #8DFF8D;
+    margin-right: 8px;
+}
+
+.card-footer-tag {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* ======================================= */
+/* 4. SECCIÓN DE ESTADÍSTICAS (COUNTERS) */
+/* ======================================= */
+
+.stats-section {
+    position: relative;
+    padding: 80px 0;
+    /* Degradado de fondo profesional */
+    background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary)); 
+    background-size: 400% 400%;
+}
+
+.stats-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.stat-item {
+    flex-basis: 180px; 
+    color: var(--color-text-light);
+    padding: 15px;
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #FFF;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* ======================================= */
+/* 5. TIMELINE (TRAYECTORIA) */
+/* ======================================= */
+
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px 0;
+}
+
+/* Línea vertical central */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--color-primary-light);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Posiciones de ítems */
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; }
+
+.timeline-content {
+    background-color: var(--color-background-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-content h4 {
+    color: var(--color-primary-dark);
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.timeline-tag {
+    display: inline-block;
+    background: var(--color-primary-light);
+    color: #FFF;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    margin-top: 10px;
+}
+
+/* El punto central con el año */
+.timeline-point {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-primary);
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    z-index: 1;
+    top: 30px;
+}
+
+.timeline-point::before {
+    content: attr(data-year);
+    position: absolute;
+    top: -30px;
+    width: 80px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-point { right: -49px; }
+.timeline-item:nth-child(even) .timeline-point { left: -39px; }
+
+/* ======================================= */
+/* 6. CONTACTO Y MAPA */
+/* ======================================= */
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.contact-block {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #F8F8F8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-block h3 {
+    color: var(--color-primary-dark);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.contact-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.contact-block a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.location-map {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.location-map iframe {
+    filter: grayscale(80%) contrast(110%); /* Mapa en blanco y negro sutil */
+    transition: filter 0.5s;
+    width: 100%;
+    display: block;
+}
+
+.location-map:hover iframe {
+    filter: grayscale(0%) contrast(100%); /* Mapa a color al pasar el ratón */
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: #FFF;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ======================================= */
+/* 7. ADAPTACIÓN MÓVIL (MEDIA QUERIES) */
+/* ======================================= */
+@media (max-width: 1000px) {
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-secondary .hero-content-flex {
+        flex-direction: column;
+    }
+    .hero-secondary .hero-info-text {
+        max-width: 100%;
+        text-align: center;
+    }
+    .hero-secondary .hero-image-container {
+        order: -1;
+    }
+    
+    /* Adaptación del Timeline para móvil */
+    .timeline-container::before {
+        left: 20px;
+    }
+    .timeline-item {
+        width: 100%;
+        left: 0;
+        padding-left: 50px;
+        padding-right: 15px;
+        text-align: left !important;
+    }
+    .timeline-item:nth-child(odd) .timeline-point,
+    .timeline-item:nth-child(even) .timeline-point {
+        left: 10px;
+        right: auto;
+    }
+    .timeline-point::before {
+        left: 50px;
+        top: 25px;
+        text-align: left;
+    }
+}
+/* ================================================= */
+/* SOLUCIÓN DE CONTRASTE: BOTÓN AZUL (CONTACTO) */
+/* ================================================= */
+
+/* Selector del botón de acción principal */
+.main-action-btn, 
+.cta-button {
+    /* Asegura que el texto del botón de acción principal sea BLANCO */
+    color: #FFFFFF !important; 
+    /* El !important asegura que este color prevalezca sobre cualquier otro estilo */
+    
+    /* Si el botón tiene sombra de texto, asegúrate de que sea sutil o nula */
+    text-shadow: none; 
+    
+    /* Para el botón de "Ir a Formulario de Reserva" en la sección de contacto */
+    /* Asegura el padding y la fuente para que se vea legible */
+    font-weight: 700;
+    padding: 12px 25px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+/* ======================================= */
+/* 6. CONTACTO Y MAPA - MODIFICACIÓN DE COLOR */
+/* ======================================= */
+
+.location-map {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.location-map iframe {
+    /* **CAMBIO AQUÍ: Eliminamos el filtro de escala de grises inicial** */
+    filter: none; 
+    transition: filter 0.5s;
+    width: 100%;
+    display: block;
+}
+
+.location-map:hover iframe {
+    /* Opcional: Si quieres que el mapa se ponga en escala de grises al pasar el ratón, déjalo. */
+    /* Si quieres que se quede SIEMPRE en color, cambia 'grayscale(0%)' por 'none' */
+    filter: none; 
+}
+
+/* El resto de la sección .location-map queda igual */
+/* ... */
+/* ======================================= */
+/* ACORDEÓN (FAQ/PREGUNTAS FRECUENTES) - VERSIÓN CORREGIDA */
+/* ======================================= */
+
+.faq-section {
+    padding: 4rem 0;
+}
+
+.accordion-container {
+    max-width: 900px;
+    margin: 0 auto; 
+}
+
+.accordion-item {
+    margin-bottom: 15px;
+    background-color: var(--color-card-dark, #1a2730);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    overflow: hidden; 
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--color-text-light, #FFF);
+    transition: background-color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.accordion-header:hover {
+    background-color: rgba(0, 180, 216, 0.1);
+}
+
+.accordion-header h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-primary-light, #48CAE4);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.accordion-header h3 .fas {
+    font-size: 1.3rem;
+    color: #00B4D8;
+}
+
+.accordion-icon {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Estado Activo: El JavaScript añade la clase 'active' al header */
+.accordion-header.active {
+    background-color: rgba(0, 180, 216, 0.2);
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Contenido de la respuesta: OCULTACIÓN POR DEFECTO (MAX-HEIGHT: 0) */
+.accordion-content {
+    max-height: 0; /* CLAVE PARA LA OCULTACIÓN */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0 25px; 
+    background-color: #161c27;
+    color: #B0B0B0;
+}
+
+/* Estado ABIERTO: El JavaScript añade la clase 'is-open' */
+.accordion-content.is-open {
+    max-height: 1000px; /* Valor alto para el despliegue */
+    padding: 15px 25px 20px 25px; /* Añade padding vertical al abrir */
+}
+
+.accordion-content p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- CORRECCIÓN DEL ERROR 404 (IMAGEN NO ENCONTRADA) --- */
+.hero-page-banner {
+    /* Si no tienes la imagen, establece un color sólido de fondo en su lugar */
+    background-color: #001219; /* O tu color oscuro preferido */
+    
+    /* COMENTA O BORRA la siguiente línea para eliminar el error 404
+    background-image: url('images/sella-background-pro.jpg');
+    */
+    background-size: cover;
+    background-position: center 70%;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
 }
