@@ -424,3 +424,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+// =========================================================
+    // IV. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ) - ACTUALIZADO
+    // =========================================================
+
+    // Seleccionamos los botones de las preguntas basándonos en tu nuevo HTML
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const accordionItem = header.parentElement;
+            
+            // Cerrar otros acordeones abiertos para un efecto más limpio
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                if (item !== accordionItem) {
+                    item.classList.remove('active');
+                    // Opcional: actualizar el atributo de accesibilidad
+                    item.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Alternar la clase 'active' en el ítem actual
+            const isActive = accordionItem.classList.toggle('active');
+            
+            // Actualizar atributo aria para lectores de pantalla
+            header.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        });
+    });
