@@ -3595,7 +3595,7 @@ blockquote:hover {
     transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
     padding: 0 25px; 
     background-color: #161c27;
-    color: #B0B0B0;
+    color: #0f0e0e;
 }
 
 /* Estado ABIERTO: El JavaScript añade la clase 'is-open' */
@@ -3627,139 +3627,89 @@ blockquote:hover {
     position: relative;
     z-index: 1;
 }
-/* --- TARJETAS FAQ CON RESPUESTA DE ALTO CONTRASTE --- */
-
-.accordion-item {
-    background-color: #00B4D8; /* Fondo azul de la tarjeta */
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 18px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Cabecera (Pregunta) */
-.accordion-header {
-    background: none;
-    border: none;
-    width: 100%;
-    padding: 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.accordion-header h3 {
-    color: #ffffff;
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    text-align: left;
-    padding-right: 15px;
-}
-
-.accordion-icon {
-    color: #ffffff;
-    transition: transform 0.3s ease;
-}
-
-/* --- ESTA ES LA PARTE QUE RESALTA LA RESPUESTA --- */
+/* Estilos para el Acordeón */
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-    background-color: #ffffff; /* Fondo blanco para que la respuesta destaque */
-    margin: 0 5px 5px 5px; /* Margen pequeño para que se vea el borde azul */
-    border-radius: 0 0 10px 10px;
-}
-
-.accordion-content p {
-    color: #1a1a1a; /* Texto casi negro para máxima legibilidad */
-    line-height: 1.8;
-    padding: 25px; /* Más espacio interno */
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 500; /* Un poco más de grosor al texto */
-}
-
-/* Estado cuando está abierto */
-.accordion-item.active {
-    background-color: #0077B6; /* Azul más oscuro en el borde al abrir */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    background-color: #f9f9f9; /* Color de fondo suave para la respuesta */
+    padding: 0 20px;
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 500px;
+    max-height: 500px; /* Un valor lo suficientemente grande */
+    padding: 20px;
+}
+
+.accordion-header {
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0e5fac;
+    border: 1px solid #ddd;
+    padding: 15px 20px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: #172053;
+}
+
+/* Rotación del icono de flecha */
+.accordion-icon {
+    transition: transform 0.3s ease;
 }
 
 .accordion-item.active .accordion-icon {
     transform: rotate(180deg);
 }
-
-/* Efecto hover en la pregunta */
-.accordion-header:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-/* =========================================================
-   AJUSTE DE SIMETRÍA: TARJETA DE TEXTO E IMAGEN (INICIO)
-   ========================================================= */
-
-/* 1. Contenedor principal: alineación y espacio */
+/* Contenedor principal para alinear ambos bloques */
 .hero-content-flex {
     display: flex;
-    align-items: stretch; /* CLAVE: Fuerza a que la imagen y el texto midan lo mismo de alto */
-    justify-content: center;
-    gap: 30px;            /* Espacio entre los dos bloques */
-    max-width: 1100px;    /* Tamaño contenido y elegante */
-    margin: 50px auto;    /* Centra el bloque y le da aire arriba/abajo */
+    align-items: stretch; /* Esto obliga a que ambos hijos tengan la misma altura */
+    gap: 30px;            /* Espacio entre la tarjeta y la imagen */
+    max-width: 1100px;    /* Ajusta el ancho total a tu gusto */
+    margin: 40px auto;
     padding: 0 20px;
 }
 
-/* 2. Caja de texto (Izquierda) */
+/* La tarjeta de texto */
 .tarjetas {
-    flex: 1;              /* Ocupa exactamente el 50% */
-    padding: 40px;
-    background: var(--mid-dark); /* Usamos tu variable de fondo oscuro */
-    border: 1px solid var(--primary-color); /* Borde azul fino */
-    border-radius: 20px;
+    flex: 1;              /* Toma el 50% del espacio */
+    padding: 30px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-shadow: var(--shadow-ambient); /* Tu sombra personalizada */
+    justify-content: center; /* Centra el texto verticalmente */
 }
 
-/* 3. Contenedor de la Imagen (Derecha) */
+/* El contenedor de la imagen */
 .hero-image {
-    flex: 1;              /* Ocupa exactamente el 50% */
-    border-radius: 20px;
-    overflow: hidden;     /* Corta la imagen para que respete las esquinas */
-    border: 1px solid var(--primary-color);
-    box-shadow: var(--shadow-ambient);
+    flex: 1;              /* Toma el otro 50% para ser simétrica */
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;     /* Para que la imagen respete las esquinas redondeadas */
 }
 
-/* 4. Comportamiento de la Imagen */
+/* La imagen propiamente dicha */
 .hero-image img {
-    width: 100%;
-    height: 100%;         /* Se estira para igualar al texto */
-    object-fit: cover;    /* Recorta la foto para que no se vea aplastada */
-    display: block;
-    transition: transform 0.5s ease;
+    width: 100%;          /* Ocupa todo el ancho de su contenedor */
+    height: 100%;         /* Ocupa toda la altura (forzada por el stretch de flex) */
+    object-fit: cover;    /* CLAVE: Recorta la imagen para que llene el espacio sin estirarse */
+    object-position: center;
 }
 
-/* Efecto visual al pasar el ratón por la imagen */
-.hero-image:hover img {
-    transform: scale(1.05);
-}
-
-/* 5. Adaptación para móviles (una debajo de otra) */
-@media (max-width: 850px) {
+/* Ajuste para móviles: que se pongan una debajo de otra */
+@media (max-width: 768px) {
     .hero-content-flex {
         flex-direction: column;
     }
+    
     .hero-image {
-        height: 300px; /* Altura fija para que no desaparezca en móviles */
+        height: 300px; /* En móvil le damos una altura fija para que no sea infinita */
     }
 }
 /* =========================================================
@@ -3961,6 +3911,72 @@ blockquote:hover {
     }
 }
 /* =========================================================
+   ARREGLO DE BARRA DE NAVEGACIÓN (RESPONSIVE)
+   ========================================================= */
+
+@media (max-width: 850px) {
+    /* Escondemos el menú original y lo preparamos para el despliegue */
+    .main-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido a la derecha */
+        width: 80%;   /* Ocupa casi toda la pantalla */
+        height: 100vh;
+        background: var(--dark-background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* Cuando el menú esté activo (clase añadida por JS) */
+    .main-menu.active {
+        right: 0; /* Aparece desde la derecha */
+    }
+
+    .menu-item {
+        margin: 20px 0;
+        font-size: 1.5rem;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* El botón de hamburguesa (las tres rayas) ahora debe ser visible */
+    .menu-toggle {
+        display: block;
+        z-index: 1100;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    /* Animación del icono de hamburguesa a una "X" al abrir */
+    .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+}
+
+/* Asegurar que el logo y el toggle estén separados */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+}
+/* =========================================================
    SOLO PARA MÓVILES: CENTRADO DE TIMELINE
    ========================================================= */
 
@@ -4015,91 +4031,60 @@ blockquote:hover {
         text-align: center !important;
     }
 }
-
-/* =========================================================
-   BARRA AZUL MAXIMIZADA AL BORDE IZQUIERDO
-   ========================================================= */
-
-@media (max-width: 950px) {
-    /* 1. Forzamos al cuerpo a no tener espacios laterales */
-    body {
-        padding-left: 0 !important;
-        margin-left: 0 !important;
-        overflow-x: hidden !important;
-    }
-
-    .logo-container {
-        display: none !important;
-    }
-
-    /* 2. El Header: Forzamos el pegado total a la izquierda */
+/* --- SOLO PARA PANTALLAS PEQUEÑAS (Móvil) --- */
+@media (max-width: 768px) {
+    /* 1. Forzamos al header a apilar los elementos (Logo arriba, Menú abajo) */
     .header {
-        display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-start !important;
-        align-items: flex-start !important; 
-        
-        width: 100vw !important; /* Ancho total de pantalla */
-        min-height: 350px !important;
-        
-        /* Reducimos el margen izquierdo a 0 o incluso negativo si hiciera falta */
-        padding: 80px 0 40px 0px !important; 
-        margin-left: 0 !important;
-        
-        background: #0d1b2a !important; 
-        border-top: 8px solid #00B4D8 !important;
-        
-        position: relative !important;
-        left: 0 !important;
-        box-sizing: border-box !important;
+        height: auto !important;
+        padding: 0 !important; /* Eliminamos rellenos laterales para que el azul llegue al borde */
+        background-color: #002147; /* Color oscuro original del logo */
     }
 
-    /* 3. Menú: Alineación total al borde */
+    /* 2. El logo se queda arriba centrado */
+    .logo-container {
+        padding: 10px 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* 3. El Menú se convierte en la franja azul que dibujaste */
     .main-menu {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
+        position: static !important; /* Deja de ser lateral fijo */
+        display: flex !important;    /* Lo hacemos visible siempre */
+        flex-direction: column !important; /* Uno debajo de otro */
         width: 100% !important;
-        gap: 25px !important;
+        height: auto !important;
+        background-color: #00B4D8 !important; /* El color azul turquesa */
+        transform: none !important;    /* Quitamos desplazamientos */
+        visibility: visible !important;
+        opacity: 1 !important;
         padding: 0 !important;
-        /* Bajamos el inicio para que no toque la raya azul superior */
-        margin: 30px 0 0 0 !important; 
+        box-shadow: none !important;
     }
 
-    /* 4. Enlaces: Pegados al extremo izquierdo */
+    /* 4. Los enlaces del menú en modo ultra-compacto */
     .menu-item {
-        display: block !important;
-        text-align: left !important;
-        font-size: 1.5rem !important; /* Letra grande y potente */
-        color: #ffffff !important;
+        color: white !important;
+        font-size: 0.65rem !important; /* Tamaño muy pequeño */
+        font-weight: 700;
+        text-align: center;
+        padding: 6px 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         text-transform: uppercase;
-        font-weight: 900;
-        text-decoration: none !important;
-        
-        /* Ajusta este valor si quieres que toque el borde o respire 5px */
-        padding-left: 15px !important; 
-        
-        width: 100% !important;
-        letter-spacing: 1.5px;
+        letter-spacing: 0.5px;
     }
 
-    /* 5. Marca activa */
-    .menu-item.active {
-        color: #00B4D8 !important;
+    /* Quitamos el borde al último botón */
+    .menu-item:last-child {
+        border-bottom: none;
     }
 
-    .menu-item.active::after {
-        content: '';
-        display: block;
-        width: 50px;
-        height: 4px;
-        background: #00B4D8;
-        margin-top: 6px;
-        /* Alineamos la rayita con el inicio del texto */
-        margin-left: 15px !important; 
-    }
-
+    /* 5. Ocultamos el botón de las tres rayas (hamburguesa) */
     .menu-toggle {
         display: none !important;
     }
 }
+
