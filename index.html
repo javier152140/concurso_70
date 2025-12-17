@@ -53,23 +53,20 @@
             <h1 class="scroll-reveal fade-in-up">Descubre Asturias. Vive la Aventura.</h1>
             <p class="subtitle scroll-reveal fade-in-up" data-delay="0.1">Selecciona las actividades que deseas
                 experimentar. Personaliza tu itinerario.</p>
+            
             <div class="hero-content-flex">
-
                 <div class="tarjetas scroll-reveal fade-in-up" data-delay="0.3">
                     <h2>Asturias: Donde la Aventura Te Espera</h2>
-
                     <p>
                         <strong>¡Asturias, Paraíso Natural!</strong> Nuestra región es el escenario perfecto,
                         combinando la majestuosidad de los <strong>Picos de Europa</strong> con la adrenalina del
                         <strong>Río Sella</strong>.
                     </p>
-
                     <p>
                         El <span class="highlight-sella">Descenso del Sella en canoa</span> es el clásico
                         inolvidable. Pero si buscas más emociones, nuestra oferta se extiende a rutas de montaña,
                         exploración subterránea y deportes acuáticos de máxima intensidad.
                     </p>
-
                     <p class="final-cta">
                         Elige tu aventura entre nuestras 6 experiencias únicas:
                     </p>
@@ -78,18 +75,18 @@
                 <div class="hero-image scroll-reveal fade-in-up" data-delay="0.4">
                     <img src="cangas.jpg" alt="Aventura en Asturias">
                 </div>
-
             </div>
 
             <div class="carousel-wrapper">
-                
                 
                 <button class="carousel-nav prev-btn" id="prevActivity">←</button>
                 
                 <div class="carousel-container" id="activityCarousel">
                     
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image sella"></div>
+                        <div class="card-image-container">
+                            <img src="descenso-del-sella.jpeg" alt="Descenso del Sella" class="card-img-top">
+                        </div>
                         <h3>Descenso del Sella</h3>
                         <p>La ruta de canoas más famosa de Asturias. Diversión y aventura garantizadas para toda la familia.</p>
                         <div class="price">25€ / persona</div>
@@ -97,7 +94,9 @@
                     </div>
 
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image picos"></div>
+                        <div class="card-image-container">
+                            <img src="picos-de-europa.webp" alt="Ruta Picos de Europa" class="card-img-top">
+                        </div>
                         <h3>Ruta Picos de Europa</h3>
                         <p>Rutas guiadas por el corazón de los Picos. Descubre paisajes increíbles y senderos legendarios.</p>
                         <div class="price">45€ / persona</div>
@@ -105,15 +104,19 @@
                     </div>
 
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image rafting"></div>
+                        <div class="card-image-container">
+                            <img src="rafting-asturias.jpg" alt="Rafting en Asturias" class="card-img-top">
+                        </div>
                         <h3>Rafting</h3>
-                        <p>Descenso de ríos en balsa. Una experiencia de adrenalina y trabajo en equipo. ¡Solo en temporada de aguas bravas!</p>
+                        <p>Descenso de ríos en balsa. Una experiencia de adrenalina y trabajo en equipo. ¡Solo en temporada!</p>
                         <div class="price">35€ / persona</div>
                         <button class="add-to-cart-btn js-select-btn" data-name="Rafting" data-price="35.00">Seleccionar Actividad</button>
                     </div>
                     
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image quad"></div>
+                        <div class="card-image-container">
+                            <img src="quad-picos.jpg" alt="Ruta en Quad" class="card-img-top">
+                        </div>
                         <h3>Ruta en Quad</h3>
                         <p>Explora caminos y montes asturianos con una ruta en quad. Una forma diferente de ver el paisaje.</p>
                         <div class="price">60€ / persona</div>
@@ -121,7 +124,9 @@
                     </div>
                     
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image cueva"></div>
+                        <div class="card-image-container">
+                            <img src="cueva-asturias.jpg" alt="Espeleología" class="card-img-top">
+                        </div>
                         <h3>Espeleología</h3>
                         <p>Atrévete a explorar cuevas subterráneas y descubre un mundo oculto en los Picos de Europa.</p>
                         <div class="price">40€ / persona</div>
@@ -129,7 +134,9 @@
                     </div>
                     
                     <div class="activity-card scroll-reveal zoom-in-delay">
-                        <div class="card-image barranco"></div>
+                        <div class="card-image-container">
+                            <img src="barranquismo-asturias.jpg" alt="Barranquismo" class="card-img-top">
+                        </div>
                         <h3>Barranquismo</h3>
                         <p>Desciende cañones, salta a pozas de agua cristalina y deslízate por toboganes naturales.</p>
                         <div class="price">55€ / persona</div>
@@ -139,7 +146,6 @@
                 </div>
                 
                 <div class="carousel-dots" id="carouselDots"></div>
-
                 <button class="carousel-nav next-btn" id="nextActivity">→</button>
                 
             </div>
